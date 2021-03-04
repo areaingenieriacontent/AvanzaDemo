@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Plenamente.Models.CriterioAfp>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CicloPHVAAfp.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Crit_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Crit_Porcentaje)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Crit_Registro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoriaExcepcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CicloPHVAAfp.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Crit_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Crit_Porcentaje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Crit_Registro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoriaExcepcion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Crit_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Crit_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Crit_Id })
+        </td>
+    </tr>
+}
+
+</table>

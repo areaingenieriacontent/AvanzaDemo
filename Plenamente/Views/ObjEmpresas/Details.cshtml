@@ -1,0 +1,59 @@
+﻿@model Plenamente.Models.ObjEmpresa
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ObjEmpresa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empresa.Empr_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oemp_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oemp_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oemp_Descrip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oemp_Descrip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oemp_Meta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oemp_Meta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oemp_Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oemp_Registro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Oemp_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,39 @@
+﻿@model Plenamente.Models.AreaEmpresa
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+    <div class="colorVerdeBack">
+        <p>Crear un nueva área</p>
+    </div>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="centrarContenido">
+
+
+    @Html.EditorFor(model => model.Aemp_Nom, new { htmlAttributes = new { @placeholder = "Nombre del área" } })
+    <div class="form-group">
+        <div class="col-md-10">
+            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>  @Html.DropDownList("Empr_Nit", null, htmlAttributes: new { @class = "form-control" })</label>
+        </div>
+    </div>
+
+
+    @*Campo de Registro oculto*@
+
+        <label asp-for="AreaRegistro" class="col-md-4 control-label">@Html.DisplayFor(Model => Model.Aemp_Registro)</label>
+        <input type="submit" value="Guardar" class="btn btn-default" />
+</div>
+}
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "AreaEmpresas")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

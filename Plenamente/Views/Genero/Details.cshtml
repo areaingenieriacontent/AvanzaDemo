@@ -1,0 +1,35 @@
+﻿@model Plenamente.Models.Genero
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Genero</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Gene_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gene_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gene_Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gene_Registro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Gene_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

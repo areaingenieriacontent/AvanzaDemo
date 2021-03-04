@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewData["Title"] - PTSST</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+          crossorigin="anonymous">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/estilosParciales.css" rel="stylesheet" />
+    <!-- Full Calendar -->
+    <link href="~/Content/fullcalendar.min.css" rel="stylesheet" />
+    <link href="~/Content/fullcalendar.print.min.css" rel="stylesheet" media="print" />
+    <!-- Chartjs -->
+    <link href="~/Content/chartjs/Chart.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="bannerPrincipal">
+        @Html.Partial("_LoginPartial")
+    </div>
+    <div class="contenedorPrincipal">
+        <div class="contenedor-menu">
+            @Html.Partial("_IndexMenu")
+        </div>
+        <div class="contenidoSection">
+            @RenderBody()
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap1.js"></script>
+    <script src="~/Scripts/main1.js"></script>
+    <!-- qTip -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

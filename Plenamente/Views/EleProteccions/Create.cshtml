@@ -1,0 +1,35 @@
+﻿@model Plenamente.Models.EleProteccion
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Crear un nuevo elemento</p>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="centrarContenido">
+    Nombre del Elemento:
+    <br />
+    @Html.EditorFor(model => model.Epro_Nom, new { htmlAttributes = new { @class = "" } })
+    <div class="form-group">
+        @*Campo de Registro oculto*@
+        <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>@Html.DisplayFor(Model => Model.Epro_Registro)  </label>
+    </div>
+
+            <input type="submit" value="Crear" class="btn btn-default" />
+</div>
+}
+
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "AreaEmpresas")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

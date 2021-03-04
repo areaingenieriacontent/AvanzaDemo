@@ -1,0 +1,150 @@
+﻿@model IEnumerable<Plenamente.Models.ViewModel.CicloPHVAViewModel>
+
+@{
+    ViewBag.Title = "Autoevaluación SST";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="colorVerdeBack">
+    <p>
+        Autoevaluación APB
+        <a href="#" class="ayudaTitulos"><span style="width: 300px">Aquí podrá desplegar los campos de la autoevaluación y al hacer clic se podrán diligenciar los diferentes items. </span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /></a>
+    </p>
+    <br />
+</div>
+<div class="contenidoCuerpo">
+    @foreach (var ciclo in Model)
+    {
+        if (ciclo.Criterios != null && ciclo.Criterios.Count > 0)
+        {
+            <h2 class="colorVerdeBack1 text-capitalize text-left" style="background-color: darkgray;">@ciclo.Nombre <img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:6%" /></h2>
+            <div class="panel panel-default plegable">
+                @foreach (var criterio in ciclo.Criterios)
+                {
+                    if (criterio.Estandares != null && criterio.Estandares.Count > 0)
+                    {
+                        <div class="panel panel-default" style="margin: 10px 10px 10px 10px;">
+                            <div class="panel-heading">
+                                <h3>@criterio.Nombre </h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="well well-lg" style="padding-left: 15px;">
+                                    @foreach (var estandar in criterio.Estandares)
+                                    {
+                                        if (estandar.Elementos != null && estandar.Elementos.Count > 0)
+                                        {
+                                            <h4>@estandar.Nombre @estandar.Porcentaje% </h4>
+                                            <br />
+                                            <ul class="list-group">
+                                                @foreach (var elemento in estandar.Elementos)
+                                                {
+                                                    <li class="list-group-item">
+                                                        <i class="fa @(elemento.ExisteCumplimiento ? "fa-check" : "fa-window-minimize")" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");"></i>
+                                                        <a href="@Url.Action("Cumplimiento", "AutoEvaluacion", new { idItem = elemento.Id })" title="@elemento.Descripcion" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");">
+                                                            @elemento.Descripcion
+                                                        </a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        }
+    }
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <input type="button" onclick="location.href = '@Url.Action("GuardarTerminar")';" value="Guardar autoevaluación" class="btn btn-default" />
+        </div>
+    </div>
+    <div class="row">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <label class="text-danger">@ViewBag.TextError</label>
+        <label class="text-success">@ViewBag.TextExitoso</label>
+    </div>
+</div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "Home")" class="ayudaTitulos">
+        <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+    </a>
+</div>
+
+
+
+
+
+@*@model IEnumerable<Plenamente.Models.ViewModel.CriteriosViewModel>
+
+    @{
+        ViewBag.Title = "Autoevaluación SST";
+        Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+    }
+    <div class="colorVerdeBack">
+        <p>Autoevaluación SST</p>
+    </div>
+
+
+    <div class="contenidoCuerpo centrarContenido">
+
+
+        @foreach (var criterio in Model)
+        {
+            if (criterio.Estandares != null && criterio.Estandares.Count > 0)
+            {
+
+                <h2 class="colorVerdeBack1">@criterio.Nombre</h2>
+                <div class="panel panel-default plegable">
+                    <div class="panel-body" style="background: #e2d8d8;">
+
+                        <div class="well well-lg" style="padding-left: 30px; background: #e2d8d8;">
+
+
+                            @foreach (var estandar in criterio.Estandares)
+                            {
+                                if (estandar.Elementos != null && estandar.Elementos.Count > 0)
+                                {
+
+                                    <h3>@estandar.Nombre</h3>
+
+                                    foreach (var elemento in estandar.Elementos)
+                                    {
+                                        <ul class="list-group">
+                                            <li class="list-group-item " style="background: darkgray; border: 2px solid #000000">
+                                                <i class="fa @(elemento.ExisteCumplimiento ? "fa-check" : "fa-window-minimize")" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");"></i>
+                                                <a href="@Url.Action("Cumplimiento", "AutoEvaluacion", new { idItem = elemento.Id })" title="@elemento.Descripcion" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");">
+                                                    @elemento.Descripcion
+                                                    <i class="fas fa-chevron-right"> Ingrese Aqui</i>
+
+                                                </a>
+
+                                            </li>
+
+                                        </ul>
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <input type="button" onclick="location.href = '@Url.Action("GuardarTerminar")';" value="Guardar y terminar" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="row">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <label class="text-danger">@ViewBag.TextError</label>
+            <label class="text-success">@ViewBag.TextExitoso</label>
+        </div>
+    </div>
+    <div class="contenidoVolver">
+        <a href="@Url.Action("Index", "Home")" class="ayudaTitulos">
+            <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+        </a>
+    </div>*@

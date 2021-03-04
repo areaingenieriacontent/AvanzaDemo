@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "error";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="row" >
+    <div class="col-lg-12">
+        <h2 class="colorVerde text-center" style="padding:20px">Completa los otros modulos para poder continuar</h2>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <!--Barra de carrga-->
+        <div class="center">
+
+
+            <div class="progresso">
+                <p>Empresa</p>
+                <progress id="Empresa" max="100" value="0"></progress>
+                <span></span>
+                <p>Comités</p>
+                <progress id="cero" max="100" value="0"></progress>
+                <span></span>
+                <p>Seguimiento y control</p>
+                <progress id="cero1" max="100" value="0"></progress>
+                <span></span>
+                <p>Reporte e investigacion</p>
+                <progress id="cero2" max="100" value="0"></progress>
+                <span></span>
+                <p>Medición</p>
+                <progress id="cero3" max="100" value="0"></progress>
+                <span></span>
+                <p>Administración</p>
+                <progress id="cero4" max="100" value="0"></progress>
+                <span></span>
+            </div>
+
+            <center><input type="button" id="boton" value="Continuar" /></center>
+        </div>
+
+
+        <!--Fin Barra-->
+    </div>
+    <div class="col-lg-3"></div>
+</div>
+<script src="~/Scripts/barraprogreso.js"></script>
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        animateprogress("#Empresa", 51);
+        animateprogress("#cero", 0);
+        animateprogress("#cero1", 0);
+        animateprogress("#cero2", 0);
+        animateprogress("#cero3", 0);
+        animateprogress("#cero4", 0);
+
+    }
+    document.querySelector("#boton").addEventListener("click", function () {
+        animateprogress("#Empresa", 51);
+        animateprogress("#cero", 0);
+        animateprogress("#cero1", 0);
+        animateprogress("#cero2", 0);
+        animateprogress("#cero3", 0);
+        animateprogress("#cero4", 0);
+        alert("No has completado todos los modulos");
+
+    });
+
+</script>

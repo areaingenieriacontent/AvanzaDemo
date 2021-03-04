@@ -1,0 +1,62 @@
+﻿@model Plenamente.Models.ViewModel.EmpresaViewModel
+
+@{
+	ViewBag.Title = "ModificarNumeroEmpleados";
+	Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+	<p>Modificar el Nro. de empleados - Empresa @Model.NombreEmpresa </p>
+</div>
+
+
+@using (Html.BeginForm())
+{
+<div class="contenidoCuerpo">
+	@Html.AntiForgeryToken()
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<p>
+				En este formulario puede realizar la modificación del número de empleados que componen su empresa.
+				Tenga en cuenta que este número afecta la cantidad de preguntas de su autoevaluación de acuerdo con el número de empleados
+			</p>
+		</div>
+		<hr />
+		<div class="form-horizontal">
+			<h4>Modificar el numero de empleados</h4>
+			<hr />
+			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+			
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.NombreEmpresa, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.NombreEmpresa, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+					@Html.ValidationMessageFor(model => model.NombreEmpresa, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.Label("Ingrese el número de empleados", htmlAttributes: new { @class = "control-label col-md-6" })
+				<div class="col-md-6">
+					@Html.EditorFor(model => model.NumeroEmpleados, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.NumeroEmpleados, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Guardar" class="btn btn-default" />
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	}
+
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "Home")" class="ayudaTitulos">
+        <span>Volver al inicio</span>
+        <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+    </a>
+</div>

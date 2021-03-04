@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Indicadores";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="colorVerdeBack">
+    <p>Indicadores</p>
+</div>
+<div class="contenidoCuerpo">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <canvas id="chartPromedio" class="chart-container marco" chart-route="/Indicadores/PromedioAutoevaluaciones" chart-type="horizontalBar"></canvas>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <canvas id="chartAvance" class="chart-container marco" chart-route="/Indicadores/AvanceAutoevaluaciones" chart-type="line"></canvas>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <canvas id="chartUltima" class="chart-container marco" chart-route="/Indicadores/UltimaAutoevaluacion" chart-type="pie"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/chartjs")
+}

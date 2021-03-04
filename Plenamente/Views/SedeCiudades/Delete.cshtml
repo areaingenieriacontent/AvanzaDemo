@@ -1,0 +1,41 @@
+﻿@model Plenamente.Models.SedeCiudad
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Eliminar Sede</p>
+</div>
+<div class="centrarContenido">
+    <dl>
+        <dt>
+            Nombre De La Sede:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sciu_Nom)
+        </dd>
+
+        <dt>
+            Fecha De Registro:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sciu_Registro)
+        </dd>
+    </dl>
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" />
+        </div>
+    }
+</div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "sedeCiudades")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>

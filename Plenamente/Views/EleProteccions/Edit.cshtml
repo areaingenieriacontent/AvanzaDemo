@@ -1,0 +1,37 @@
+﻿@model Plenamente.Models.EleProteccion
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+    <div class="colorVerdeBack">
+        <p>Editar Elementos</p>
+    </div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="centrarContenido">
+
+
+        Nombre del Elemento:
+                @Html.EditorFor(model => model.Epro_Nom, new { htmlAttributes = new { @class = "" } })
+
+
+        <div class="form-group">
+            <label hidden asp-for="EproRegistro" class="col-md-4 control-label" >@Html.DisplayFor(Model => Model.Epro_Registro)  </label>
+        </div>
+
+                <input type="submit" value="Guardar" class="btn btn-default" />
+    </div>
+}
+
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "EleProteccions")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

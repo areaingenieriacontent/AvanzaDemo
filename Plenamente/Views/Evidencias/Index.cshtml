@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Plenamente.Models.Evidencia>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Pers_Nom1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cumplimiento.Cump_Observ)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoDocCarga.Tdca_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Evid_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Evid_Archivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Evid_Registro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationUser.Pers_Nom1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cumplimiento.Cump_Observ)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoDocCarga.Tdca_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Evid_Nombre)
+        </td>
+        <td>
+            <p> <a href="~/Files/@item.Evid_Archivo" download="~/Files/@item.Evid_Archivo" target="_blank"> Descargue el archivo </a></p>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Evid_Registro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Evid_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Evid_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Evid_Id })
+        </td>
+    </tr>
+}
+
+</table>

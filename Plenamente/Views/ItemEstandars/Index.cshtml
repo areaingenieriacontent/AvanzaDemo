@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Plenamente.Models.ItemEstandar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Estandar.Esta_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Desc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Verificar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Porcentaje)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Cumple)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Nocumple)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Justifica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Nojustifica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Peri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Observa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Registro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estandar.Esta_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Desc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Verificar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Porcentaje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Cumple)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Nocumple)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Justifica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Nojustifica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Peri)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Observa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Registro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Iest_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Iest_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Iest_Id })
+        </td>
+    </tr>
+}
+
+</table>

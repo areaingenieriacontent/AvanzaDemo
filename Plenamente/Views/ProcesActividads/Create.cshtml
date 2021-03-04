@@ -1,0 +1,44 @@
+﻿@model Plenamente.Models.ProcesActividad
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+    <div class="colorVerdeBack">
+        <p>Crear Procesos y Actividades</p>
+    </div>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="centrarContenido">
+    <hr />
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="col-md-10">
+            Nombre proceso o actividad
+            @Html.EditorFor(model => model.Pact_Nombre, new { htmlAttributes = new { @class = "form" } })
+            @Html.ValidationMessageFor(model => model.Pact_Nombre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @*Campo de Registro oculto*@
+        <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>@Html.DisplayFor(Model => Model.Pact_Registro)  </label>
+    </div>
+
+            <input type="submit" value="Create" class="btn btn-default" />
+
+</div>
+}
+
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "ProcesActividads", null)" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,110 @@
+﻿@model PagedList.IPagedList<Plenamente.Models.ApplicationUser>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "UsersSysadmin";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="colorVerdeBack">
+    <p>Trabajadores de la empresa </p>
+</div>
+<div class="contenedorBotones">
+    <form asp-action="Users" method="get">
+        <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
+        <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
+        <a href="@Url.Action("UsersSysadmin", "admin")" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "admin", new {Empr_Nit = @ViewBag.Empr_Nit})" class="ayudaTitulos"><span>Crear Trabajador</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+    </form>
+</div>
+<table id="tablaVista" class="tablaVista">
+    <thead class="cabeceraTabla">
+        <tr>
+            <th class="colorVerde" style="width:17%">
+                Nombre
+            </th>
+            <th class="colorVerde" style="width:11%">
+                Documento
+            </th>
+            <th class="colorVerde" style="width:30%">
+                Correo
+            </th>
+            @*<th class="colorVerde">
+                    Sede de Trabajo
+                </th>*@
+            @*<th class="colorVerde">
+                    Ciudad
+                </th>*@
+            @*<th class="colorVerde">
+                    Cargo
+                </th>*@
+            @*<th class="colorVerde">
+                    Proceso
+                </th>*@
+            @*<th class="colorVerde">
+                    Area de Trabajo
+                </th>*@
+            <th class="colorVerde" style="width:10%">
+                ARL
+            </th>
+            <th class="colorVerde" style="width:18%">
+                Empresa
+            </th>
+            <th class="colorVerde" style="width:14%">
+                Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody class="cuerpoTabla">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="width:17%">
+                    @Html.DisplayFor(modelItem => item.Pers_Nom1) @Html.DisplayFor(modelitem => item.Pers_Apel1)
+                </td>
+                <td style="width:11%">
+                    @Html.DisplayFor(modelItem => item.Pers_Doc)
+                </td>
+                <td style="width:30%; text-align:center">
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.SedeCiudad.Sciu_Nom)
+                    </td>
+                    <td>
+                            Ciudad
+                        </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CargoEmpresa.Cemp_Nom)
+                    </td>
+                    <td>
+                            Proceso
+                    </td>*@
+                <td style="width:10%">
+                    @Html.DisplayFor(modelItem => item.Arl.Arl_Nom)
+                </td>
+                @*<td style="width:14%">
+                        @Html.DisplayFor(modelItem => item.Jefe.Pers_Nom1) @Html.DisplayFor(modelItem => item.Jefe.Pers_Apel1)
+                    </td>*@
+                <td style="width:18%">
+                    @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
+                </td>
+                <td style="width:14%">
+                    @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
+                    {
+                        @Html.ActionLink("Editar", "EditUser", new { UserName = item.UserName })
+                    }
+                    |
+                    @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
+                    {
+                        @Html.ActionLink("Eliminar", "DeleteUser", new { UserName = item.UserName },
+                        new { onclick = "return confirm('Are you sure you wish to delete this user?');" })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="paginacionLista">
+    @Html.PagedListPager(Model, page => Url.Action("Users",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>
+

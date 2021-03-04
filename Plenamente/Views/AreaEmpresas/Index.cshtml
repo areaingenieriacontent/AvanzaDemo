@@ -1,0 +1,103 @@
+﻿@model PagedList.IPagedList<Plenamente.Models.AreaEmpresa>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Áreas</p>
+</div>
+<div class="contenedorBotones">
+    <form asp-action="Index" method="get">
+        <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Buscar..." />
+        <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
+        <a href="@Url.Action("Index", "AreaEmpresas", null)" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "AreaEmpresas", null)" class="ayudaTitulos"><span>Crear área</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+    </form>
+</div>
+<table id="tablaVista" class="tablaVista">
+    <thead class="cabeceraTabla">
+        <tr>
+            <th class="colorVerde">
+                Nombre del área
+            </th>
+            @* Area Registro
+                <th>
+                    @Html.DisplayNameFor(model => model.Aemp_Registro)
+                </th>*@
+            <th class="colorVerde"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aemp_Nom)
+                </td>
+                @* Area Registro
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Aemp_Registro)
+                    </td>*@
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Aemp_Id }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Aemp_Id })
+                </td>
+            </tr>
+        }
+
+</table>
+<div class="paginacionLista">
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>
+
+@model IEnumerable<Plenamente.Models.ViewModel.CriteriosViewModel>
+@{
+    ViewBag.Title = "Autoevaluación SST";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="colorVerdeBack">
+    <p>Autoevaluación SST</p>
+</div>
+<div class="container">
+    @foreach (var criterio in Model)
+    {
+        <hr />
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2>@criterio.Nombre</h2></div>
+            <div class="panel-body">
+                <hr />
+                @if (criterio.Estandares != null)
+                {
+                    <div class="well well-lg" style="padding-left: 30px;">
+                        @foreach (var estandar in criterio.Estandares)
+                        {
+                            if (estandar.Elementos != null)
+                            {
+                                <br />
+                                <h3>@estandar.Nombre</h3>
+                                <br />
+                                foreach (var elemento in estandar.Elementos)
+                                {
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span class="badge"><i class="fade fa-check"></i></span>
+                                            @elemento.Descripcion
+                                        </li>
+                                    </ul>
+                                }
+                            }
+                        }
+                    </div>
+                }
+            </div>
+            <div class="panel-footer"></div>
+        </div>
+    }
+</div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "Home")" class="ayudaTitulos">
+        <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+    </a>
+</div>

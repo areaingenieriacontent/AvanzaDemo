@@ -1,0 +1,26 @@
+﻿@using ReportViewerForMvc;
+@{
+    ViewBag.Title = "Historico Auto Evaluaciones";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="colorVerdeBack">
+    <p>Historico Auto Evaluaciones APB</p>
+</div>
+<div class="contenidoCuerpo">
+    <div class="row">
+        <label class="text-danger">@ViewBag.TextError</label>
+    </div>
+    @if (ViewBag.ReportViewer != null)
+    {
+        <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" style="overflow-x:scroll; height:80vh;">
+                @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { scrolling = "no", style = "width: 100%; height: 100%;" })
+            </div>
+        </div>
+    }
+</div>
+<div class="contenidoVolver" onload="miFuncion();">
+    <a href="@Url.Action("VerHistorico","AutoevaluacionAfps")" class="ayudaTitulos">
+        <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+    </a>
+</div>

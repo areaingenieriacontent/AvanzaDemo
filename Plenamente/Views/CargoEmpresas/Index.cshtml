@@ -1,0 +1,64 @@
+﻿@model PagedList.IPagedList<Plenamente.Models.CargoEmpresa>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="colorVerdeBack">
+    <p>Cargos de la empresa </p>
+</div>
+
+<div class="contenedorBotones">
+    <form asp-action="Index" method="get">
+        <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
+        <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
+        <a href="@Url.Action("Index", "CargoEmpresas")" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "CargoEmpresas")" class="ayudaTitulos"><span>Crear cargo individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+    </form>
+</div>
+
+<table id="tablaVista" class="tablaVista">
+    <thead class="cabeceraTabla">
+        <tr>
+            @*<th class="colorVerde">
+                    @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
+                    Nombre empresa
+                </th>*@
+            <th class="colorVerde">
+                @*@Html.DisplayNameFor(model => model.Cemp_Nom)*@
+                Nombre del cargo
+            </th>
+            <th class="colorVerde">
+                Controles
+            </th>
+        </tr>
+    </thead>
+    <tbody class="cuerpoTabla">
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cemp_Nom)
+                </td>
+                @*Campo Registro Comentado*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Cemp_Registro)
+                    </td>*@
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Cemp_Id }) |
+                    @*@Html.ActionLink("Details", "Details", new { id = item.Cemp_Id }) |*@
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Cemp_Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="paginacionLista">
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>
+

@@ -1,0 +1,91 @@
+﻿@model Plenamente.Models.ViewModel.EmpresaViewModel
+
+@{
+    /**/
+
+    ViewBag.Title = "NumeroEmpleados";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Nro. de empleados - Empresa @Model.NombreEmpresa </p>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="contenidoCuerpo">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p>
+                    Los requisitos exigibles para su organización de los estándares mínimos se encuentran configurados
+                    de acuerdo con el tamaño de la empresa
+                </p>
+            </div>
+            <div class="panel-body">
+                <hr />
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.Label(string.Format("El tamaño de su empresa es de {0} trabajadores y se generará una autoevaluación que contiene únicamente los estándares de sst que debe cumplir", Model.NumeroEmpleados), htmlAttributes: new { @class = "control -label col-md-12" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Si, es correcto" class="btn btn-default" />
+                @*@Html.ActionLink("No, quiero corregir", "ModificarNumeroEmpleados", "Autoevaluacion", new { numeroEmpleados = Model.NumeroEmpleados }, new { @class = "btn btn-primary" })*@
+                @Html.ActionLink("Ver histórico", "VerHistorico", "Autoevaluacion", new { @class = "btn btn-primary" })
+            </div>
+            <div class="row">
+                @Html.Label("Recuerde que si el tamaño de su empresa cambia debe notificarnos para hacer los cambios adecuados", htmlAttributes: new { @class = "control-label", style = "padding-left: 40px;" })
+            </div>
+        </div>
+
+        <div class="contenidoVolver">
+            <a href="@Url.Action("Index", "Home")" class="ayudaTitulos">
+                <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+            </a>
+        </div>
+
+
+        <!--Modal Popup-->
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Modal Heading</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        Modal body..
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+}
+
+
+
+
+
+

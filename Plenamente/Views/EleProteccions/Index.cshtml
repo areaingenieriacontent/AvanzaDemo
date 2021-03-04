@@ -1,0 +1,48 @@
+﻿@model PagedList.IPagedList<Plenamente.Models.EleProteccion>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Cargos de la empresa </p>
+</div>
+<div class="contenedorBotones">
+    <form asp-action="Index" method="get">
+        <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
+        <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
+        <a href="@Url.Action("Index", "EleProteccions")" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "EleProteccions")" class="ayudaTitulos"><span>Crear cargo individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+    </form>
+</div>
+<table id="tablaVista" class="tablaVista">
+    <thead class="cabeceraTabla">
+        <tr>
+            <th class="colorVerde">
+                Nombre del Elemento:
+            </th>
+
+            <th class="colorVerde"></th>
+        </tr>
+    </thead>
+    <tbody class="cuerpoTabla">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Epro_Nom)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Epro_Id })|
+
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Epro_Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="paginacionLista">
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>

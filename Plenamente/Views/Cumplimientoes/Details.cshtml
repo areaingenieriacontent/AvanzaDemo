@@ -1,0 +1,91 @@
+﻿@model Plenamente.Models.Cumplimiento
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cumplimiento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AutoEvaluacion.Auev_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AutoEvaluacion.Auev_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empresa.Empr_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemEstandar.Iest_Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemEstandar.Iest_Desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cump_Cumple)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cump_Cumple)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cump_Nocumple)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cump_Nocumple)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cump_Justifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cump_Justifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cump_Nojustifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cump_Nojustifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cump_Observ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cump_Observ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cump_Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cump_Registro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Cump_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

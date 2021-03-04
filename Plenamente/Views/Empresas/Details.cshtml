@@ -1,0 +1,138 @@
+﻿@model Plenamente.Models.Empresa
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Empresa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Arl.Arl_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Arl.Arl_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClaseArl.Carl_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClaseArl.Carl_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empr_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empr_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empr_Dir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empr_Dir)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empr_Afiarl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empr_Afiarl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empr_Ttrabaja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empr_Ttrabaja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empr_Itrabaja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empr_Itrabaja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empr_telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empr_telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empr_Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empr_Registro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empr_NewNit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empr_NewNit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empr_RepresentanteLegal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empr_RepresentanteLegal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empr_CargoRepresentante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empr_CargoRepresentante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empre_RepresentanteDoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empre_RepresentanteDoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empr_ResponsableSST)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empr_ResponsableSST)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empre_ResponsableDoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empre_ResponsableDoc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Empr_Nit }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

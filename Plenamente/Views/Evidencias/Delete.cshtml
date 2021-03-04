@@ -1,0 +1,73 @@
+﻿@model Plenamente.Models.Evidencia
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Evidencia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Pers_Nom1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.Pers_Nom1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cumplimiento.Cump_Observ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cumplimiento.Cump_Observ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoDocCarga.Tdca_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoDocCarga.Tdca_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Evid_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Evid_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Evid_Archivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Evid_Archivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Evid_Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Evid_Registro)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

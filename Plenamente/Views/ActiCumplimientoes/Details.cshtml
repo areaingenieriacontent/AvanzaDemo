@@ -1,0 +1,106 @@
+﻿@model Plenamente.Models.ActiCumplimiento
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ActiCumplimiento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Pers_Nom1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.Pers_Nom1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empresa.Empr_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Frecuencia.Frec_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Frecuencia.Frec_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ObjEmpresa.Oemp_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ObjEmpresa.Oemp_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Periodo.Peri_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Periodo.Peri_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Acum_Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acum_Desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Acum_Porcentest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acum_Porcentest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Acum_Ejec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acum_Ejec)
+        </dd>
+
+        <dt hidden>
+            @Html.DisplayNameFor(model => model.Acum_Registro)
+        </dt>
+
+        <dd hidden>
+            @Html.DisplayFor(model => model.Acum_Registro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Acum_IniAct)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acum_IniAct)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Acum_FinAct)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acum_FinAct)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Acum_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

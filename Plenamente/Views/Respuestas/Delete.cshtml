@@ -1,0 +1,47 @@
+﻿@model Plenamente.Models.Respuesta
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Eliminar Respuesta </p>
+</div>
+<div class="centrarContenido">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pregunta.Preg_Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pregunta.Preg_Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Resp_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Resp_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Resp_Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Resp_Registro)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+            <input type="submit" value="Delete" class="btn btn-default" /> 
+    }
+</div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "Respuestas", new {id = @ViewBag.idPregunta , idPregunta = @ViewBag.idPregunta}, null)" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>

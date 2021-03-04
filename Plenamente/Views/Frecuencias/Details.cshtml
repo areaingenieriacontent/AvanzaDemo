@@ -1,0 +1,34 @@
+﻿@model Plenamente.Models.Frecuencia
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Frecuencia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Frec_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Frec_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Frec_Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Frec_Registro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Frec_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

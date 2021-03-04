@@ -1,0 +1,69 @@
+﻿@model Plenamente.Models.Encuesta
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Eliminar Encuestas</p><br />
+</div>
+<div class="centrarContenido">
+    <dl class="dl-horizontal">
+        <dt>
+            Nombre de la Encuesta:
+            <br />
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Encu_Nombre)
+        </dd>
+
+        <dt>
+            Fecha de creación:
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Encu_Creacion)
+        </dd>
+
+        <dt>
+            Fecha de vencimiento;
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Encu_Vence)
+        </dd>
+
+        <dt>
+            Estado de la encuesta:
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Encu_Estado)
+        </dd>
+
+        <dt>
+            Ultima actualización:
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Encu_Registro)
+        </dd>
+
+    </dl>
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+            <input type="submit" value="Eliminar" class="btn btn-default" /> 
+
+    }
+</div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "Encuestas", null)" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>

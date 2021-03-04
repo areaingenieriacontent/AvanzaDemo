@@ -1,0 +1,51 @@
+﻿@model Plenamente.Models.AutoEvaluacion
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AutoEvaluacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empresa.Empr_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Auev_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Auev_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Auev_Inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Auev_Inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Auev_Fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Auev_Fin)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Auev_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

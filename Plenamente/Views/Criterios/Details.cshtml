@@ -1,0 +1,43 @@
+﻿@model Plenamente.Models.Criterio
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Criterio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Crit_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Crit_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Crit_Porcentaje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Crit_Porcentaje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Crit_Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Crit_Registro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Crit_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

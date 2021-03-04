@@ -1,0 +1,273 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "Indicadores";
+}
+<div class="colorVerdeBack">
+    <p>Indicadores</p>
+</div>
+<div>
+    <div class="container-fluid" style="background:#dbdcddbd">
+        <div class="row" style="background:#dbdcddbd">
+            <div class="col-md-5 lines-Dash">
+                <h3 class="text-center dashT">
+                    APLICACIÓN PROTOCOLOS BIOSEGURIDAD
+                </h3>
+                <hr class="hr-dash" />
+                <canvas id="AplicacionProtocolosBioseguridad10" class="chart-container marco" chart-route="../Dashboard/PromedioPBA?nitempresa=@ViewData["NitEmpresa"]" chart-type="pie"></canvas>
+
+
+            </div>
+            <div class="col-md-7 lines-Dash">
+                <h3 class="text-center dashT">
+                    IMPLEMENTACIÓN CICLO P.H.V.A.
+                </h3>
+                <hr class="hr-dash" />
+                <div class="col-md-6">
+
+                    <div class="col-md-12">
+                        <canvas id="AplicacionProtocolosBioseguridad2" class="chart-container marco" chart-route="../Dashboard/ImplementacionPHVAPlanear?nitempresa=@ViewData["NitEmpresa"]" chart-type="pie"></canvas>
+                    </div>
+                    <div class="col-md-12">
+                        <canvas id="AplicacionProtocolosBioseguridad1" class="chart-container marco" chart-route="../Dashboard/ImplementacionPHVAHacer?nitempresa=@ViewData["NitEmpresa"]" chart-type="pie"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="col-md-12">
+                        <canvas id="AplicacionProtocolosBioseguridad3" class="chart-container marco" chart-route="../Dashboard/ImplementacionPHVAVerificar?nitempresa=@ViewData["NitEmpresa"]" chart-type="pie"></canvas>
+                    </div>
+                    <div class="col-md-12">
+                        <canvas id="AplicacionProtocolosBioseguridad4" class="chart-container marco" chart-route="../Dashboard/ImplementacionPHVAActuar?nitempresa=@ViewData["NitEmpresa"]" chart-type="pie"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 lines-Dash ">
+                <h3 class="text-center dashT">
+                    INDICADOR TRABAJADORES CERTIFICADOS
+                </h3>
+                <canvas id="chartPromedio" class="chart-container marco" chart-route="../Dashboard/ImplementacionApi?location=@ViewData["location"]" chart-type="horizontalBar"></canvas>
+
+            </div>
+            <div class="col-md-6 lines-Dash ">
+                <h3 class="text-center dashT">
+                    CUMPLIMIENTO DEL PLAN DE TRABAJO
+                </h3>
+                <canvas id="chartPromedio1" class="chart-container marco" chart-route="../Dashboard/AvanceAutoevaluaciones?nitempresa=@ViewData["NitEmpresa"]" chart-type="pie"></canvas>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 lines-Dash">
+                <h3 class="text-center dashT">
+                    Puesto de Lavado de Manos
+                </h3>
+                <hr class="hr-dash" />
+                <img class="imagen-Dash" alt="Bootstrap Image Preview" src="~/Files/@ViewData["ImagenLavadoManos"]" data-toggle="modal" data-target="#myModal" />
+            </div>
+            <div class="col-md-3 lines-Dash">
+                <h3 class="text-center dashT">
+                    Elementos de Protección Personal
+                </h3>
+                <hr class="hr-dash" />
+                <img class="imagen-Dash" alt="Bootstrap Image Preview" src="~/Files/@ViewData["ImagenProteccionPersonal"]" data-toggle="modal" data-target="#myModal2" />
+            </div>
+            <div class="col-md-3 lines-Dash">
+                <h3 class="text-center dashT">
+                    Distanciamiento Físico
+                </h3>
+                <hr class="hr-dash" />
+                <img class="imagen-Dash" alt="Bootstrap Image Preview" src="~/Files/@ViewData["ImagenDistanciamientoFisico"]" data-toggle="modal" data-target="#myModal3" />
+            </div>
+            <div class="col-md-3 lines-Dash">
+                <h3 class="text-center dashT">
+                    Protocolo Lavado Manos
+                </h3>
+                <hr class="hr-dash" />
+                <img class="imagen-Dash" alt="Bootstrap Image Preview" src="~/Files/@ViewData["ImagenProtocoloLavadoManos"]" data-toggle="modal" data-target="#myModal4" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 lines-Dash">
+                <h3 class="text-center dashT">
+                    Radicación Protocolos de Bioseguridad
+                </h3>
+                <hr class="hr-dash" />
+                <a href="~/Files/@ViewData["PDFRadicacionProtocolosBioSeguridad"]" target="_blank"><img class="imagen-Dash" alt="Bootstrap Image Preview" src="~/Imagenes/resolucion-666.jpg" /></a>
+            </div>
+            <div class="col-md-3 lines-Dash">
+                <h3 class="text-center dashT">
+                    Certificación Acompañamiento ARL
+                </h3>
+                <hr class="hr-dash" />
+                <a href="~/Files/@ViewData["PDFCertificacionAcompañamientoArl"]" target="_blank"><img class="imagen-Dash center" alt="Bootstrap Image Preview" align="middle" src="~/Imagenes/certificacionarl.jpg" /></a>
+            </div>
+            <div class="col-md-3 lines-Dash">
+                <h3 class="text-center dashT">
+                    Plan de Movilidad
+                </h3>
+                <hr class="hr-dash dashT" />
+                <img class="imagen-Dash" alt="Bootstrap Image Preview" src="~/Files/@ViewData["ImagenPlanMovilidad"]" data-toggle="modal" data-target="#myModal5" />
+            </div>
+            <div class="col-md-3 lines-Dash">
+                <h3 class="text-center dashT">
+                    Protocolo de Acceso
+                </h3>
+                <hr class="hr-dash" />
+                <img class="imagen-Dash" alt="Bootstrap Image Preview" src="~/Files/@ViewData["ImagenProtocoloDeAcceso"]" data-toggle="modal" data-target="#myModal6" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 lines-Dash">
+                <h3 class="text-center dashT">
+                    APLICACIÓN SGSST
+                </h3>
+                <hr class="hr-dash" />
+                <canvas id="AplicacionProtocolosBioseguridad5" class="chart-container marco" chart-route="../Dashboard/PromedioSGSST?nitempresa=@ViewData["NitEmpresa"]" chart-type="pie"></canvas>
+
+
+            </div>
+            <div class="col-md-7 lines-Dash">
+                <h3 class="text-center dashT">
+                    IMPLEMENTACIÓN CICLO P.H.V.A.
+                </h3>
+                <hr class="hr-dash" />
+                <div class="col-md-6">
+
+                    <div class="col-md-12">
+                        <canvas id="AplicacionProtocolosBioseguridad6" class="chart-container marco" chart-route="../Dashboard/ImplementacionSGSSTPlanear?nitempresa=@ViewData["NitEmpresa"]" chart-type="pie"></canvas>
+                    </div>
+                    <div class="col-md-12">
+                        <canvas id="AplicacionProtocolosBioseguridad7" class="chart-container marco" chart-route="../Dashboard/ImplementacionSGSSTHacer?nitempresa=@ViewData["NitEmpresa"]" chart-type="pie"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="col-md-12">
+                        <canvas id="AplicacionProtocolosBioseguridad8" class="chart-container marco" chart-route="../Dashboard/ImplementacionSGSSTVerificar?nitempresa=@ViewData["NitEmpresa"]" chart-type="pie"></canvas>
+                    </div>
+                    <div class="col-md-12">
+                        <canvas id="AplicacionProtocolosBioseguridad9" class="chart-container marco" chart-route="../Dashboard/ImplementacionSGSSTActuar?nitempresa=@ViewData["NitEmpresa"]" chart-type="pie"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Puesto de Lavado de Manos</h4>
+                </div>
+                <img class="imagen-DashModal" alt="Bootstrap Image Preview" src="~/Files/@ViewData["ImagenLavadoManos"]" />
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="myModal2" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">
+                        Elementos de Protección Personal
+                    </h4>
+                </div>
+                <img class="imagen-DashModal" alt="Bootstrap Image Preview" src="~/Files/@ViewData["ImagenProteccionPersonal"]" />
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="myModal3" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Distanciamiento Físico</h4>
+                </div>
+                <img class="imagen-DashModal" alt="Bootstrap Image Preview" src="~/files/@ViewData["ImagenDistanciamientoFisico"]" />
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="myModal4" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">
+                        Plan de Movilidad
+                    </h4>
+                </div>
+                <img class="imagen-DashModal" alt="Bootstrap Image Preview" src="~/files/@ViewData["ImagenProtocoloLavadoManos"]" />
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="myModal5" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">
+                        Plan de Movilidad
+                    </h4>
+                </div>
+                <img class="imagen-DashModal" alt="Bootstrap Image Preview" src="~/files/@ViewData["ImagenPlanMovilidad"]" />
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="myModal6" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">
+                        Protocolo de Acceso
+                    </h4>
+                </div>
+                <img class="imagen-DashModal" alt="Bootstrap Image Preview" src="~/Files/@ViewData["ImagenProtocoloDeAcceso"]" />
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/chartjs")
+    }

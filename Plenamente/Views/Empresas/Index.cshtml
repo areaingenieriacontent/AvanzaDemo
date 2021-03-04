@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Plenamente.Models.Empresa>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Arl.Arl_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClaseArl.Carl_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_Dir)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_Afiarl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_Ttrabaja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_Itrabaja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_Registro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_NewNit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_RepresentanteLegal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_CargoRepresentante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empre_RepresentanteDoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_ResponsableSST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empre_ResponsableDoc)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Arl.Arl_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClaseArl.Carl_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_Dir)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_Afiarl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_Ttrabaja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_Itrabaja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_Registro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_NewNit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_RepresentanteLegal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_CargoRepresentante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empre_RepresentanteDoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_ResponsableSST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empre_ResponsableDoc)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Empr_Nit }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Empr_Nit }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Empr_Nit })
+        </td>
+    </tr>
+}
+
+</table>

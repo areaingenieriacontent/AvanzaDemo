@@ -1,0 +1,107 @@
+﻿@model Plenamente.Models.ItemEstandar
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ItemEstandar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Estandar.Esta_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estandar.Esta_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Iest_Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Iest_Desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Iest_Verificar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Iest_Verificar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Iest_Porcentaje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Iest_Porcentaje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Iest_Cumple)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Iest_Cumple)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Iest_Nocumple)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Iest_Nocumple)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Iest_Justifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Iest_Justifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Iest_Nojustifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Iest_Nojustifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Iest_Peri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Iest_Peri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Iest_Observa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Iest_Observa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Iest_Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Iest_Registro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Iest_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

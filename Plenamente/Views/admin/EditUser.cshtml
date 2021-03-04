@@ -1,0 +1,210 @@
+﻿@model Plenamente.Models.ExpandedUserDTO
+@{
+    ViewBag.Title = "EditUser";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Editar usuario </p>
+</div>
+<div class="centrarContenido">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true,
+       "",
+       new { @class = "text-danger" })
+
+        <div class="form-group">
+            Nombre
+            <hr />
+            @Html.EditorFor(model => model.Nombres,
+           new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Nombres, "",
+           new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            Apellidos
+            <hr />
+            @Html.EditorFor(model => model.Apellidos,
+           new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Apellidos, "",
+           new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            Tipo de documento
+            @Html.DropDownListFor(model => model.Tdoc_Id, new SelectList(Model.tipoDocumento, "Tdoc_Id", "Tdoc_Nom", "Tipo de documento"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.tipoDocumento, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            No. de documento
+            <hr />
+            @Html.EditorFor(model => model.Documento,
+           new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Documento, "",
+           new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            Género
+            <hr />
+            @Html.DropDownListFor(model => model.Gene_Id, new SelectList(Model.genero, "Gene_Id", "Gene_Nom", "Genero"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.genero, "", new { @class = "text-danger" })
+        </div>
+        @*<div class="form-group">
+            Nombre de usuario
+            <hr />
+            @Html.EditorFor(model => model.UserName,
+           new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserName, "",
+           new { @class = "text-danger" })
+        </div>*@
+        <div class="form-group">
+            Correo electrónico
+            <hr />
+            @Html.EditorFor(model => model.Email,
+           new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email,
+           "",
+           new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            Contraseña
+            <hr />
+            @Html.PasswordFor(model => model.Password,
+           new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password,
+           "",
+           new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            Estado del usuario
+            <hr />
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Espe_Id, new SelectList(Model.estadoPersona, "Espe_Id", "Espe_Nom", "Estado persona"), new { @class = "form-control" })
+            </div>
+        </div>
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Roles,
+           htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Roles", null, htmlAttributes: new { @class = "estilosSelect" })
+            </div>
+        </div>*@
+        <div class="form-group">
+            No. de licencia de conducir
+            <hr />
+            @Html.EditorFor(model => model.Pers_Licencia,
+           new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Pers_Licencia, "",
+           new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            Fecha de vigencia de la licencia
+            <hr />
+            @Html.EditorFor(model => model.Pers_LicVence,
+           new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Pers_LicVence, "",
+           new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            Categoría de la licencia
+            <hr />
+            @Html.DropDownListFor(model => model.Cate_Id, new SelectList(Model.cateLicencia, "Cate_Id", "Cate_Nom", "Categoría de la licencia"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.cateLicencia, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            Dirección de residencia
+            <hr />
+            @Html.EditorFor(model => model.Pers_Direccion,
+           new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Pers_Direccion, "",
+           new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            Contacto de emeregencia
+            <hr />
+            @Html.EditorFor(model => model.Pers_ContactoEmeg,
+           new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Pers_ContactoEmeg, "",
+           new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            Teléfono de emergencia
+            <hr />
+            @Html.EditorFor(model => model.Pers_TelefonoEmeg,
+           new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Pers_TelefonoEmeg, "",
+           new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            Aseguradora de riesgos profesionales
+            <hr />
+            @Html.DropDownListFor(model => model.Afp_Id, new SelectList(Model.afp, "Afp_Id", "Afp_Nom", "AFP"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.afp, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            Empresa promotora de salud
+            <hr />
+            @Html.DropDownListFor(model => model.Eps_Id, new SelectList(Model.eps, "Eps_Id", "Eps_Nom", "EPS"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.eps, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            Aseguradora de riesgos laborales
+            <hr />
+            @Html.DropDownListFor(model => model.Arl_Id, new SelectList(Model.arl, "Arl_Id", "Arl_Nom", "ARL"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.arl, "", new { @class = "text-danger" })
+        </div>
+        @*<div class="form-group">
+           Sede de trabajo
+                @Html.DropDownListFor(model => model.Sciu_Id, new SelectList(Model.sedeCiudad, "Sciu_Id", "Sciu_Nom", "Sede de trabajo"))
+                @Html.ValidationMessageFor(model => model.sedeCiudad, "", new { @class = "text-danger" })
+        </div>*@
+        @*<div class="form-group">
+           Área donde trabaja
+                @Html.DropDownListFor(model => model.Aemp_Id, new SelectList(Model.areaEmpresa, "Aemp_Id", "Aemp_Nom", "Dependencia/Area"))
+                @Html.ValidationMessageFor(model => model.areaEmpresa, "", new { @class = "text-danger" })
+        </div>*@
+        @*<div class="form-group">
+           Cargo que desempeña
+                @Html.DropDownListFor(model => model.Cemp_Id, new SelectList(Model.cargoEmpresa, "Cemp_Id", "Cemp_Nom", "Cargo que desempeña"))
+                @Html.ValidationMessageFor(model => model.cargoEmpresa, "", new { @class = "text-danger" })
+        </div>*@
+        @*<div class="form-group">
+           Jornada en la que labora
+                @Html.DropDownListFor(model => model.Jemp_Id, new SelectList(Model.jornadaEmpresa, "Jemp_Id", "Jemp_Nom", "Jornada de trabajo"))
+                @Html.ValidationMessageFor(model => model.jornadaEmpresa, "", new { @class = "text-danger" })
+        </div>*@
+        <div class="form-group">
+            Tipo de contrato
+            <hr />
+            @Html.DropDownListFor(model => model.Tvin_Id, new SelectList(Model.tipoVinculacion, "Tvin_Id", "Tvin_Nom", "Tipo de contrato"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.tipoVinculacion, "", new { @class = "text-danger" })
+        </div>
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.jefe,
+           htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.jefe,
+               new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.jefe, "",
+               new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+                @Html.ActionLink("Edit Roles", "EditRoles",
+               new { UserName = Model.UserName },
+               new { @class = "btn btn-default" })
+                @Html.ActionLink("Back to List",
+               "Users",
+               null,
+               new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+    }
+</div>

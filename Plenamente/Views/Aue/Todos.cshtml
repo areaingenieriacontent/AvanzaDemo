@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Plenamente.Models.ViewModel.DinamicaAu>
+@{
+    ViewBag.Title = "Todos";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>TEST DINAMICA </h2>
+@foreach (var item in Model)
+{
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Crit_Nom)
+    </td>
+    ||
+    <td>
+        @Html.DisplayFor(modelItem => item.Crit_Porcentaje)
+    </td>
+    ||
+    <td>
+        @Html.DisplayFor(ModelItem => item.Esta_Nom)
+    </td>
+    ||
+    <td>
+        @Html.DisplayFor(modelItem => item.Iest_Desc)
+    </td>
+    <br />
+</tr>
+}

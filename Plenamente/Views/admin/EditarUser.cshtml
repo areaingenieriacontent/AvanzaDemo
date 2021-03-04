@@ -1,0 +1,199 @@
+﻿@model Plenamente.Models.ApplicationUser
+@{
+    ViewBag.Title = "EditarUser";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p> Editar Usuario </p>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="centrarContenido">
+        <h2 class="colorVerdeBack1">
+            Información básica del trabajador<img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:5%; margin-right:5%" />
+            <a href="#" class="ayudaTitulos"><span style="width: 300px">Aquí podrá editar los datos básicos de tus trabajadores como el nombre, apellido, correo entre otros</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /><p></p></a>
+        </h2>
+        <div class="plegable">
+            <br />
+            <br />
+            Nombre
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Pers_Nom1, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Pers_Nom1, "", new { @class = "text-danger" })
+            <br />
+            <br />
+
+            Apellido
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Pers_Apel1, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Pers_Apel1, "", new { @class = "text-danger" })
+            <br />
+            <br />
+
+            Tipo Documento
+
+            <br />
+            <br />
+            @Html.DropDownList("Tdoc_Id", null, htmlAttributes: new { @class = "estilosSelect" })
+            @Html.ValidationMessageFor(model => model.Tdoc_Id, "", new { @class = "text-danger" })
+            <br />
+            <br />
+
+            No Documento
+
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Pers_Doc, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Pers_Doc, "", new { @class = "text-danger" })
+            <br />
+            <br />
+
+            Género
+
+            <br />
+            <br />
+            @Html.DropDownList("Gene_Id", null, htmlAttributes: new { @class = "estilosSelect" })
+            @Html.ValidationMessageFor(model => model.Gene_Id, "", new { @class = "text-danger" })
+            <br />
+            <br />
+
+            Estado
+
+            <br />
+            <br />
+            @Html.DropDownList("Espe_Id", null, htmlAttributes: new { @class = "estilosSelect" })
+            @Html.ValidationMessageFor(model => model.Espe_Id, "", new { @class = "text-danger" })
+            <br />
+            <br />
+        </div>
+        <br />
+        <br />
+        <h2 class="colorVerdeBack1">
+            Información personal del trabajador<img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:2%; margin-right:4%" />
+            <a href="#" class="ayudaTitulos"><span style="width: 300px">Aquí podrá editar los datos específicos de sus trabajadores como el número de contacto, la licencia entre otros</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /><p></p></a>        </h2>
+
+        <div class="plegable">
+            <br />
+            <br />
+            No. de licencia de conducir
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Pers_Licencia, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Pers_Licencia, "", new { @class = "text-danger" })
+            <br />
+            <br />
+            Fecha de vigencia de la licencia
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Pers_LicVence, new { htmlAttributes = new { @class = "estilosSelect" } })
+            @Html.ValidationMessageFor(model => model.Pers_LicVence, "", new { @class = "text-danger" })
+            <br />
+            <br />
+            Categoria Licencia
+            <br />
+            <br />
+            @Html.DropDownList("Cate_Id", null, htmlAttributes: new { @class = "estilosSelect" })
+            @Html.ValidationMessageFor(model => model.Cate_Id, "", new { @class = "text-danger" })
+            <br />
+            <br />
+            Direccíon de Residencia
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Pers_Dir, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Pers_Dir, "", new { @class = "text-danger" })
+            <br />
+            <br />
+            Contacto de emeregencia
+            @Html.EditorFor(model => model.Pers_Cemeg, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Pers_Cemeg, "", new { @class = "text-danger" })
+            <br />
+            <br />
+            Teléfono de emergencia
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Pers_Temeg, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Pers_Temeg, "", new { @class = "text-danger" })
+            <br />
+            <br />
+            Aseguradora de riesgos profesionales
+            <br />
+            <br />
+            @Html.DropDownList("Afp_Id", null, htmlAttributes: new { @class = "estilosSelect" })
+            @Html.ValidationMessageFor(model => model.Afp_Id, "", new { @class = "text-danger" })
+            <br />
+            <br />
+        </div>
+        <br />
+        <br />
+        <h2 class="colorVerdeBack1">
+            Otra información del trabajador<img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:7%; margin-right:5%" />
+            <a href="#" class="ayudaTitulos"><span style="width: 300px">Aquí podrá editar los datos de ley de sus trabajadores como el fondo de pensiones, aseguradora de riesgos laborales, empresa promotora de salud, entre otros</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /><p></p></a>
+        </h2>
+        <div class="plegable">
+            <br />
+            <br />
+            Empresa promotora de salud
+            <br />
+            <br />
+            @Html.DropDownList("Eps_Id", null, htmlAttributes: new { @class = "estilosSelect" })
+            @Html.ValidationMessageFor(model => model.Eps_Id, "", new { @class = "text-danger" })
+            <br />
+            <br />
+            Aseguradora de riesgos laborales
+            @Html.DropDownList("Arl_Id", null, htmlAttributes: new { @class = "estilosSelect" })
+            @Html.ValidationMessageFor(model => model.Arl_Id, "", new { @class = "text-danger" })
+            <br />
+            <br />
+
+            Aseguradora de riesgos laborales
+            <br />
+            <br />
+            @Html.DropDownList("Tvin_Id", null, htmlAttributes: new { @class = "estilosSelect" })
+            @Html.ValidationMessageFor(model => model.Tvin_Id, "", new { @class = "text-danger" })
+            <br />
+            <br />
+            Direccíon de Residencia
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Pers_Dir, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Pers_Dir, "", new { @class = "text-danger" })
+            <br />
+            <br />
+            Email
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            <br />
+            <br />
+            @Html.DropDownList("Empr_Nit", null, htmlAttributes: new { @class = "hidden" })
+            @Html.ValidationMessageFor(model => model.Empr_Nit, "", new { @class = "text-danger" })
+            <br />
+            <br />
+            Cargo del trabajador
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Pers_Cargo, new { htmlAttributes = new { @class = "estilosSelect" } })
+            @Html.ValidationMessageFor(model => model.Pers_Cargo, "", new { @class = "text-danger" })
+
+            <br />
+            <br />
+            <label asp-for="Username" class="col-md-4 control-label" hidden> @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "" } })  </label>
+            <input type="submit" value="Guardar" class="btn btn-default" />
+
+
+        </div>
+    </div>
+    <div class="contenidoVolver">
+        <a href="@Url.Action("Users", "Admin")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

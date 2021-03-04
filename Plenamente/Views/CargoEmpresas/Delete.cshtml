@@ -1,0 +1,50 @@
+﻿@model Plenamente.Models.CargoEmpresa
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Eliminar cargo</p>
+</div>
+<div class="centrarContenido">
+    <dl>
+
+        <dt>
+            Nombre Del Cargo:
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Cemp_Nom)
+        </dd>
+
+        <dt>
+            Actualizado por última vez:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cemp_Registro)
+        </dd>
+
+    </dl>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" />
+        </div>
+    }
+</div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "CargoEmpresas")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

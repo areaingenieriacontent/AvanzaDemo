@@ -1,0 +1,183 @@
+﻿@model IEnumerable<Plenamente.Models.ViewModel.EventViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<section class="contenidoSection">
+    <div class="contenidoDiv">
+        @*Seccion de graficos*@
+        <div style=" border: solid 2px;border-color: #929292;margin: 20px;padding: 40px;">
+            <p style=" font-size: 22px;font-weight: bolder;"><img src="~/Imagenes/home1.png" style="width: 3%;" />Medición del sistema</p>
+            <section class="graficosSection" style="">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <button type="button" class="" data-toggle="modal" data-target="#myModal">
+                            <canvas id="chartPromedio" class="chart-container marco" chart-route="../Indicadores/PromedioAutoevaluaciones" chart-type="horizontalBar"></canvas>
+                        </button>
+                    </div>
+
+                    <!-- Modal -->
+                    <div id="myModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Medición del ciclo PHVA</h4>
+                                </div>
+                                <canvas id="chartPromedioModal" class="chart-container marco" chart-route="../Indicadores/PromedioAutoevaluaciones" chart-type="horizontalBar"></canvas>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <button type="button" class="" data-toggle="modal" data-target="#myModal2">
+                            <canvas id="chartAvance" class="chart-container marco" chart-route="../Indicadores/AvanceAutoevaluaciones" chart-type="line"></canvas>
+                        </button>
+                    </div>
+
+
+                    <!-- Modal -->
+                    <div id="myModal2" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Alcance del plan de trabajo anual</h4>
+                                </div>
+                                <canvas id="chartAvanceModal" class="chart-container marco" chart-route="../Indicadores/AvanceAutoevaluaciones" chart-type="line"></canvas>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <button type="button" class="" data-toggle="modal" data-target="#myModal3">
+                            <canvas id="chartUltima" class="chart-container marco" chart-route="../Indicadores/UltimaAutoevaluacion" chart-type="pie"></canvas>
+                        </button>
+                    </div>
+                    <!-- Modal -->
+                    <div id="myModal3" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Cumplimiento SG-SST</h4>
+                                </div>
+                                <canvas id="chartUltimaModal" class="chart-container marco" chart-route="../Indicadores/UltimaAutoevaluacion" chart-type="pie"></canvas>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                @*<div class="graficoA">
+                    <center>
+                    <p style="text-align:left;font-size: 18px;font-weight: 600;padding: 5px 1px 14px 5px;">Medición del ciclo PHVA</p>
+                    <img src="~/Imagenes/grafica3.png" />
+                    </center>
+                    </div>
+                    <div class="graficoB">
+                    <center>
+                    <p style="text-align:left;font-size: 18px;font-weight: 600;padding: 5px 1px 14px 5px;">Alcance del plan de trabajo anual</p>
+                    <img src="~/Imagenes/grafica2.png" />
+                    </center>
+                    </div>
+                    <div class="graficoC">
+                    <p style="text-align:left;font-size: 18px;font-weight: 600;padding: 5px 1px 14px 5px;">Cumplimiento SG-SST</p>
+                    <center><img src="~/Imagenes/grafica1.png" /></center>
+                    </div>*@
+                @*<div class="graficoD">
+                    <p style="text-align:center;font-size: 18px;font-weight: 600;">Cumplimiento</p>
+                    <hr class="claseDivicion" />
+                    <center><img src="~/Imagenes/graph (2).png" /></center>
+                    </div>*@
+            </section>
+        </div>
+        @*Tareas + Periodico Virtual y modulos*@
+        <section class="tareasmoduloSection">
+            <div class="">
+                <div class="tareasDiv" style=" overflow: scroll; height:280px" >
+                    <p><img src="~/Imagenes/list.png" /> &nbsp; &nbsp;Mis Actividades</p>
+                    <hr class="claseDivicion" />
+                    <ul class="list-group">
+                        @foreach (var item in Model)
+                        {
+                            <li class="list-group-item">
+                                <i style="color: @item.BorderColor;"></i>
+                                <a href="..@item.EventRoute" title="@item.Description">
+                                    <span style="color:#4b4961;">@item.Title </span> -
+                                    <span style="color: darkgray;">@item.StartDate</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="tareasDiv">
+                    <p><img src="~/Imagenes/list.png" /> &nbsp; &nbsp;Tips SST</p>
+                    <hr class="claseDivicion" />
+
+                    <p style="font-size: 15px;font-weight: initial;">
+
+                        <i class="fas fa-check"></i> Identifique los riesgos asociados a su puesto de trabajo para mantenerse separado de las áreas y situaciones peligrosas.</br></br>
+                        <i class="fas fa-check"></i> Mantenga una postura correcta para proteger la salud de su espalda.</br></br>
+                        <i class="fas fa-check"></i>  No trabaje si se encuentra cansando o fatigado, esta condición puede ponerlo exponerlo a la ocurrencia de un accidente de trabajo.</br></br>
+                        <i class="fas fa-check"></i>  Realice pausas activas cada dos horas</br></br>
+                        <i class="fas fa-check"></i>  Si va a hacer uso de herramientas, consulte el manual de usuario para un uso correcto que le ayudará a reducir posibles lesiones.</br></br>
+                        <i class="fas fa-check"></i>  Una de las principales causas de lesiones en el trabajo es realizar las actividades de manera acelerada sin una previa planificación.</br></br>
+                        <i class="fas fa-check"></i>  Mantenga las salidas de emergencia libres, señalizadas y en buen estado.</br></br>
+                        <i class="fas fa-check"></i>  Reporte las condiciones inseguras de su lugar de trabajo, esto permitirá generar las medidas de control pertinentes.</br></br>
+                        <i class="fas fa-check"></i>  Si tiene que realizar levantamiento de cargas, utilice las ayudas mecánicas provistas, como carretillas, manivelas, cintas transportadoras, etc.</br></br>
+                        <i class="fas fa-check"></i>  Mantener el sitio de trabajo en condiciones de orden y aseo reduce las probabilidades de ocurrencia de un accidente de trabajo.</br></br>
+                    </p>
+                </div>
+            </div>
+            <div class="moduloDiv">
+                <p class="fadeIn two tituloModulos" style="font-size:25px">Módulo de formación para el administrador</p>
+                <hr class="claseDivicion" />
+                <p class="fadeIn two">Sistema de capacitación</p>
+                <br />
+                <img class="fadeIn three" src="~/Imagenes/capacitacion.png" /> @*343134*@
+                <p class="fadeIn two">Cultura segura</p>
+                <br />
+                <img class="fadeIn three" src="~/Imagenes/seguro.JPG" />
+                <p class="fadeIn two">Sistema de acompañamiento</p>
+                <br />
+                <img class="fadeIn three" src="~/Imagenes/acompañamiento.jpg" />
+                <a class="linkPrincipal" href="https://aprendeyavanza2.com.co/plenamentecap" target="_blank">Ir al Sistema</a>
+
+                <img class="fadeIn three" src="~/Imagenes/mesadeayuda.png" style="width: 60%;" /> @*343134*@
+                <a class="linkPrincipal" href="https://aprendeyavanza2.com.co/AvanzaDemo/Contacto/Create" target="_blank">Ir a la Mesa de Servicio</a>
+
+
+            </div>
+
+        </section>
+    </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/chartjs")
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+  
+}

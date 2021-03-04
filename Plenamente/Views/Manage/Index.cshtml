@@ -1,0 +1,47 @@
+﻿@model Plenamente.Models.IndexViewModel
+@{
+    ViewBag.Title = "Gestionar";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="col-sm-6" style="padding:60px">
+    <div class="col-sm-6 text-center" style="font-size: 24px;"><h2>Usuario: </h2></div>
+    <div class="col-sm-6" style="font-size: 24px;">
+        @Session["User"]
+    </div>
+    <div class="col-sm-12"></div><br /><br />
+    @if (Session["Genero"] != null)
+    {
+        <<div class="col-sm-6 text-center" style="font-size: 24px;"><h2>>Genero: </h2></div>
+        <div class="col-sm-6" style="font-size: 24px;">
+            @Session["Genero"]
+        </div>
+        <div class="col-sm-12"></div><br /><br />
+    }
+    <div class="col-sm-6 text-center" style="font-size: 24px;"><h2>Identificación: </h2></div>
+    <div class="col-sm-6" style="font-size: 24px;">
+        @Session["Documento"]
+    </div>
+    <div class="col-sm-12"></div><br /><br />
+    <div class="col-sm-6 text-center" style="font-size: 24px;">Cargo</div>
+    <div class="col-sm-6" style="font-size: 24px;">
+        @Session["Cargo"]
+    </div>
+    <div class="col-sm-12"></div><br /><br />
+    <div class="col-sm-6 text-center" style="font-size: 24px;">Contraseña: </div>
+    <div class="col-sm-6" style="font-size: 24px; color:#65ac1e">
+        [
+        @if (Model.HasPassword)
+        {
+            @Html.ActionLink("Cambiar la contraseña", "ChangePassword", new { @style = "color:red" });
+        }
+        else
+        {
+            @Html.ActionLink("Crear", "SetPassword", new { @style = "color:red" })
+        }
+        ]
+    </div>
+
+</div>
+<div class="col-sm-6">
+    <img src="/Imagenes/user.png" width="40%" style="padding:30px;background: #e0e0e09e;" class="text-center">
+</div>

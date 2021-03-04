@@ -1,0 +1,125 @@
+﻿@model Plenamente.Models.SocioDemografica
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>AutoEvaluacion SST </h2>
+<div>
+    <div >
+        @{
+                      var criterios = Model.Criterios;
+                      var estandares = Model.Estandars;
+                      var iestandares = Model.ItemEstandars;
+                     var cumplimientos = Model.Cumplimientos;
+
+
+
+                        foreach (var item in criterios)
+                        {
+                <br />
+                    <h2 class="divCriterio">@item.Crit_Nom</h2>
+                }
+            foreach (var item in estandares)
+            {
+                <p>*</p>
+                @item.Esta_Nom <br />
+                foreach (var itemm in iestandares)
+                {
+                    <br />
+                    @itemm.Iest_Desc <br />
+                    <br />
+                    @itemm.Iest_Verificar <br />
+                    @itemm.Iest_Porcentaje <br />
+                    @itemm.Iest_Cumple
+                    @itemm.Iest_Nocumple
+                    @itemm.Iest_Justifica
+                    @itemm.Iest_Nojustifica <br />
+
+                }
+            }
+        }
+    </div>
+    <div>
+        <h1> Con split </h1>
+    @{ 
+        var estandares1 = Model.Estandars1;
+        var iestandares1 = Model.itemEstandars1;
+
+        foreach (var item in estandares1)
+        {
+            @item.Esta_Nom <br />
+            foreach (var itemm in iestandares1)
+            {
+                @itemm.Iest_Desc <br />
+            }
+        }
+     }
+    </div>
+    <div>
+        <table class="table">
+            <tr>
+                <th>
+                    @{ 
+                        foreach (var item in criterios)
+                        {
+
+                            <h2 class="divCriterio">@item.Crit_Nom</h2>
+                        } }
+                </th>
+            </tr>
+            @{ foreach (var item in estandares)
+                {
+
+            <tr>
+                <th>
+                            @item.Esta_Nom
+                </th>
+            </tr>
+                    foreach (var itemm in iestandares)
+                    {
+            <tr>
+                <td> @itemm.Iest_Desc   </td>
+                <td> @itemm.Iest_Verificar </td>
+                    
+            </tr>
+
+                        foreach (var arch in cumplimientos)
+                        {
+            <tr>
+                <td> @itemm.Iest_Cumple </td>
+                <td> @itemm.Iest_Nocumple </td>
+                <td> @itemm.Iest_Justifica  </td>
+                <td> @itemm.Iest_Nojustifica </td>
+                <td><a href="~/App_Data/@arch.Cump_Aevidencia" download="@arch.Cump_Aevidencia" target="_blank">Click to get file</a></td>
+                @*<a href="~/ResourcesJobs/@item.ResourceJobs.ReJo_Resource" target="_blank" download="@item.ResourceJobs.ReJo_Resource" style="background-color:transparent;color:#f57c00;"> Descargar</a>*@
+
+                
+            </tr>
+
+
+            <tr>
+                <td> Oberservaciones </td>
+            </tr>
+                            }
+                        }
+                    }
+                }
+            <br />
+            <tr>
+                <td>ItemEstandar</td>
+                <td>Como se Verifica2</td>
+            </tr>
+            <tr>
+                <td> Cumple </td>
+                <td> No Cumple </td>
+                <td> Justifica </td>
+                <td> NoJustifica </td>
+                <td> Archivo.eXTENSION </td>
+            </tr>
+            <tr>
+                <td> Oberservaciones </td>
+            </tr>
+        </table>
+    </div>
+</div>

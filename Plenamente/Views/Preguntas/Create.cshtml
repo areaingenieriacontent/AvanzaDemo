@@ -1,0 +1,53 @@
+﻿@model Plenamente.Models.Pregunta
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="colorVerdeBack">
+    <p>Crear un nueva pregunta</p>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="centrarContenido">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <p>Titulo de la pregunta: </p>
+        @Html.EditorFor(model => model.Preg_Titulo, new { htmlAttributes = new { } })
+        @Html.ValidationMessageFor(model => model.Preg_Titulo, "", new { @class = "text-danger" })
+
+
+
+
+
+        <div class="form-group">
+            @*Campo de Registro oculto*@
+            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>@Html.DisplayFor(Model => Model.Preg_Registro)  </label>
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>@Html.EditorFor(model => model.Encu_Id, new { htmlAttributes = new { @class = "", @Value = @ViewBag.idEncuesta } })</label>
+        </div>
+
+
+        @*@Html.DropDownList("Encu_Id", null, htmlAttributes: new { @class = "estilosSelect" })
+            @Html.ValidationMessageFor(model => model.Encu_Id, "", new { @class = "text-danger", @Value = ViewBag.Enci_Id1 })*@
+
+        <input type="submit" value="Guardar" class="btn btn-default" />
+        </div>
+}
+
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "Preguntas", new {id = @ViewBag.idEncuesta , idEncuesta = @ViewBag.idEncuesta})" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,43 @@
+﻿@model Plenamente.Models.CargoEmpresa
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CargoEmpresa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empresa.Empr_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cemp_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cemp_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cemp_Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cemp_Registro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Cemp_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

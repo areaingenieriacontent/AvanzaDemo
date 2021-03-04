@@ -1,0 +1,81 @@
+﻿@model PagedList.IPagedList<Plenamente.Models.Respuesta>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="colorVerdeBack">
+    <p>Respuestas</p>
+</div>
+
+<div class="contenedorBotones">
+    <form asp-action="Index" method="get">
+        <div class="hidden">
+            <input type="text" name="idPregunta" value="@ViewBag.idPregunta" class="invisible" />
+        </div>
+        <input type="text" id="buscarDato" name="SearchString" value="@ViewData["CurrentFilter"]" />
+        <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
+        <a href="@Url.Action("Index", "Respuestas", new {idPregunta = @ViewBag.idPregunta})" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "Respuestas", new {idPregunta = @ViewBag.idPregunta})" class="ayudaTitulos"><span>Crear respuesta</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+        @*<a href="@Url.Action("eliminarRespuestas", "Respuestas", new {idPregunta = @ViewBag.idPregunta})" class="ayudaTitulos"><span>Eliminar TODAS las Respuestas</span><img src="~/Imagenes/database.png" /><p>Crear</p></a>*@
+    </form>
+</div>
+<table id="tablaVista" class="tablaVista">
+    <thead class="cabeceraTabla">
+        <tr>
+            <th class="colorVerde">
+                Tipo Respuesta:
+            </th>
+            <th class="colorVerde">
+                Nombre Respuesta:
+            </th>
+            <th class="colorVerde">
+                Fecha de registro:
+            </th>
+            <th class="colorVerde"></th>
+        </tr>
+    </thead>
+    <tbody class="cuerpoTabla">
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @if (@Html.DisplayFor(modelItem => item.Resp_Tipo).ToString() == "1")
+                {
+                    @Html.EditorFor(modelItem => item.Resp_Tipo, new { htmlAttributes = new { @class = "", @disabled = "disabled", @value = " " } })
+                }
+                else if (@Html.DisplayFor(modelItem => item.Resp_Tipo).ToString() == "2")
+                {
+                    @Html.RadioButtonFor(modelItem => item.Resp_Tipo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                }
+                else if (@Html.DisplayFor(modelItem => item.Resp_Tipo).ToString() == "3")
+                {
+                    @Html.RadioButtonFor(modelItem => item.Resp_Tipo, new { htmlAttributes = new { @class = "", @disabled = "disabled" } })
+                }
+                else if (@Html.DisplayFor(modelItem => item.Resp_Tipo).ToString() == "4")
+                {
+                    @Html.EditorFor(modelItem => item.Resp_Tipo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @type="date", @value="yyyy-MM-dd" } })
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Resp_Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Resp_Registro)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Resp_Id }) |
+                @Html.ActionLink("Eliminar", "Delete", "Respuestas", new { id = item.Resp_Id, idPregunta = item.Preg_Id }, null)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<div class="paginacionLista">
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { ViewBag.idPregunta,page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+</div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "Encuestas")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>

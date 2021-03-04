@@ -1,0 +1,120 @@
+﻿@model Plenamente.App_Tool.PaginadorGenerico<Plenamente.Models.ViewModel.AutoEvaluacionViewModel>
+
+
+@{
+    ViewBag.Title = "Historico Auto Evaluaciones";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>
+        Histórico Auto Evaluacion Apb
+        <a href="#" class="ayudaTitulos"><span style="width: 300px">Aquí podrá ver un resumen de las autoevaluaciones realizadas. Para ver el reporte de cada autoevaluación puede dar clic en el botón "Ver". </span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /></a>
+    </p>
+</div>
+<div class="contenidoCuerpo">
+    <table class="table table-bordered text-center justify-content-center">
+        <tr>
+            <th>
+                No
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Fecha de inicio
+            </th>
+            <th>
+                Fecha de finalización
+            </th>
+            <th>
+                Reporte
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Resultado)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdentificadorIncremental)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameAutoEvaluacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Auev_Inicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Auev_Fin)
+                </td>
+                <td>
+                    <a class="btn btn-success" href="@Url.Action("VerReporte", "Reportes", new { id = item.Id })" title="Ver reporte">
+                        Ver
+                    </a>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+
+    @*CÓDIGO PARA EL PAGINADOR DE REGISTROS*@
+    @if (Model.Resultado.Count() > 0)
+    {
+        <span>
+            <strong>@Model.TotalRegistros</strong> registros encontrados
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            Página <strong>@(Model.PaginaActual)</strong> de
+            <strong>@Model.TotalPaginas</strong>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+    }
+    else
+    {
+        <span>No hay resultados para esta búsqueda</span>
+        <span>&nbsp;|&nbsp;</span>
+    }
+
+    @if (Model.PaginaActual > 1)
+    {
+        @Html.ActionLink("<<", "VerHistorico", new { pagina = 1 },
+                        new { @class = "btn btn-sm btn-default" })
+        <span></span>
+        @Html.ActionLink("Anterior", "VerHistorico", new { pagina = Model.PaginaActual - 1 },
+                        new { @class = "btn btn-sm btn-default" })
+    }
+    else
+    {
+        @Html.ActionLink("<<", "VerHistorico", new { pagina = 1 },
+                        new { @class = "btn btn-sm btn-default disabled" })
+        <span></span>
+        @Html.ActionLink("Anterior", "VerHistorico", new { pagina = 1 },
+                        new { @class = "btn btn-sm btn-default disabled" })
+    }
+    <span></span>
+    @if (Model.PaginaActual < Model.TotalPaginas)
+    {
+        @Html.ActionLink("Siguiente", "VerHistorico", new { pagina = Model.PaginaActual + 1 },
+                        new { @class = "btn btn-sm btn-default" })
+        <span></span>
+        @Html.ActionLink(">>", "VerHistorico", new { pagina = Model.TotalPaginas },
+                        new { @class = "btn btn-sm btn-default" })
+    }
+    else
+    {
+        @Html.ActionLink("Siguiente", "VerHistorico", new { pagina = Model.TotalPaginas - 1 },
+                        new { @class = "btn btn-sm btn-default disabled" })
+        <span></span>
+        @Html.ActionLink(">>", "VerHistorico", new { pagina = Model.TotalPaginas },
+                        new { @class = "btn btn-sm btn-default disabled" })
+    }
+</div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "Home")" class="ayudaTitulos">
+        <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+    </a>
+</div>

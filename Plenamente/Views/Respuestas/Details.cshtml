@@ -1,0 +1,43 @@
+﻿@model Plenamente.Models.Respuesta
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Respuesta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pregunta.Preg_Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pregunta.Preg_Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Resp_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Resp_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Resp_Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Resp_Registro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Resp_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

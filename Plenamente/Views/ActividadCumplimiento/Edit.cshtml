@@ -1,0 +1,373 @@
+﻿@model Plenamente.Models.ViewModel.ViewModelActividadCumplimiento
+
+@{
+    var norepeat = "";
+    var daily = "";
+    var weekly = "";
+    var monthly = "";
+    var mestre = "";
+    var fechafinal = Convert.ToDateTime(ViewBag.dateend);
+    var fechainicial = Convert.ToDateTime(ViewBag.datestart);
+    var hoy = DateTime.Now;
+    ViewBag.Title = "Editar actividad";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+
+<div class="colorVerdeBack">
+    <p>Editar actividades</p>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="contenidoCuerpo">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.IdActiCumplimiento)
+
+    <input type="hidden" value="@ViewData[" userid"]" id="Id" name="Id" />
+
+    @Html.HiddenFor(model => model.IdEmpresa)
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NombreActividad, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.NombreActividad, new { htmlAttributes = new { @class = " text-box single-line" } })
+            @Html.ValidationMessageFor(model => model.NombreActividad, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Meta, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Meta, new { htmlAttributes = new { @class = " text-box single-line" } })
+            @Html.ValidationMessageFor(model => model.Meta, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.idObjetivo, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+
+            @Html.DropDownListFor(x => x.idObjetivo, (SelectList)ViewBag.objetivosEmpresa, new { @class = "estilosSelect" })
+            @Html.ValidationMessageFor(model => model.idObjetivo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.IdUser, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+
+            @Html.DropDownListFor(x => x.IdUser, (SelectList)ViewBag.users, new { @class = "estilosSelect "})
+            @Html.ValidationMessageFor(model => model.IdUser, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FechaInicial, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.FechaInicial, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @type = "date", @min = fechainicial.ToString("yyyy-MM-dd"), @max =fechafinal.ToString("yyyy-MM-dd") } })
+            @Html.ValidationMessageFor(model => model.FechaInicial, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="display:none;">
+        @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @type = "date", @value = fechafinal.ToString("yyyy-MM-dd"), @min = fechainicial.ToString("yyyy-MM-dd"), @max =fechafinal.ToString("yyyy-MM-dd") } })
+            @Html.ValidationMessageFor(model => model.FechaFinal, "", new { @class = "text-danger" })
+        </div>
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.asigrecursos, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.asigrecursos, new { htmlAttributes = new { @class = " text-box single-line" } })
+            @Html.ValidationMessageFor(model => model.asigrecursos, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group" style="display:none;">
+        @Html.LabelFor(model => model.hora, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.hora, new { htmlAttributes = new { @class = "form-control", @type = "time" } })
+            @Html.ValidationMessageFor(model => model.hora, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Frecuencia, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+
+            @Html.DropDownListFor(x => x.Frecuencia, (SelectList)ViewBag.frecuenciaEmpresa, new { @class = "estilosSelect", @onchange = "ShowSelected();" })
+            @Html.ValidationMessageFor(model => model.Frecuencia, "", new { @class = "text-danger" })
+
+        </div>
+        @if (Model.Frecuencia == "1")
+        {
+            norepeat = "style=display:;";
+            daily = "style=display:none;";
+            weekly = "style=display:none;";
+            monthly = "style=display:none;";
+            mestre = "style=display:none;";
+        }
+        else
+    if (Model.Frecuencia == "2")
+        {
+            norepeat = "style=display:none;";
+            daily = "style=display:; ";
+            weekly = "style=display:none;";
+            monthly = "style=display:none;";
+            mestre = "style=display:none;";
+        }
+        else
+    if (Model.Frecuencia == "3")
+        {
+            norepeat = "style=display:none;";
+            daily = "style=display:none;";
+            weekly = "style=display:;";
+            monthly = "style=display:none;";
+            mestre = "style=display:none;";
+        }
+        else
+    if (Model.Frecuencia == "4")
+        {
+            norepeat = "style=display:none;";
+            daily = "style=display:none;";
+            weekly = "style=display:none;";
+            monthly = "style=display:;";
+            mestre = "style=display:none;";
+        }
+        else
+    if (Model.Frecuencia == "8")
+        {
+            norepeat = "style=display:none;";
+            daily = "style=display:none;";
+            weekly = "style=display:none;";
+            monthly = "style=display:none;";
+            mestre = "style=display:;";
+        }
+        else
+    if (Model.Frecuencia == "9")
+        {
+            norepeat = "style=display:none;";
+            daily = "style=display:none;";
+            weekly = "style=display:none;";
+            monthly = "style=display:none;";
+            mestre = "style=display:;";
+        }
+        else
+    if (Model.Frecuencia == "10")
+        {
+            norepeat = "style=display:none;";
+            daily = "style=display:none;";
+            weekly = "style=display:none;";
+            monthly = "style=display:none;";
+            mestre = "style=display:;";
+        }
+        <div class="form-group">
+            <div class="label label-default" @norepeat id="select_norepeat">
+                No repetir
+            </div>
+        </div>
+
+        <div id="select_daily" @daily class="label label-default">
+            Repetir cada <input id="daily_every" style="width: 50px;color: black;" value="@Model.period" onchange="changeday();" /> dia(s).
+        </div>
+
+        <div id="select_weekly" @weekly class="label label-default">
+            Repetir cada <input type="hidden" id="weekly_every" style="width: 20px;" value="@Model.period" onchange="changeweek();" /> semana.
+            <div id="select_weekly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
+            <br />
+            <table>
+                <tr>
+                    <td>Los dias: </td>
+                    <td><label for="weekly_0" class="checkbox-inline"><input type="checkbox" id="weekly_0" name="weekly_0" @ViewData["lunes"] />Lunes </label></td>
+                    <td><label for="weekly_1" class="checkbox-inline"><input type="checkbox" id="weekly_1" name="weekly_1" @ViewData["martes"] />Martes </label></td>
+                    <td><label for="weekly_2" class="checkbox-inline"><input type="checkbox" id="weekly_2" name="weekly_2" @ViewData["miercoles"] />Miercoles </label></td>
+                    <td><label for="weekly_3" class="checkbox-inline"><input type="checkbox" id="weekly_3" name="weekly_3" @ViewData["jueves"] />Jueves </label></td>
+                    <td><label for="weekly_4" class="checkbox-inline"><input type="checkbox" id="weekly_4" name="weekly_4" @ViewData["viernes"] />Viernes </label></td>
+                    <td><label for="weekly_5" class="checkbox-inline"><input type="checkbox" id="weekly_5" name="weekly_5" @ViewData["sabado"] />Sabado </label></td>
+                    <td><label for="weekly_6" class="checkbox-inline"><input type="checkbox" id="weekly_6" name="weekly_6" @ViewData["domingo"] />Domingo </label></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="select_monthly" @monthly class="label label-default">
+            Repetir los dias <input id="monthly_every" style="width: 50px;color: black;" value="@Model.period" onchange="changemonth();" /> de cada mes.
+            <div id="select_monthly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
+            <br />
+        </div>
+        <div id="select_mestre" @mestre class="label label-default">
+            Repetir los dias <input id="mestre_every" style="width: 50px;color: black;" value="@Model.period" onchange="changemestre();" /> del mes.
+            <div id="select_mestre" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">POr favor selecciones un dia</div>
+            <br />
+        </div>
+        <input id="period" name="period" type="hidden" value="" />
+        <input id="Frecuencia" name="Frecuencia" type="hidden" value="" />
+
+
+
+    </div>
+
+   
+    <div class="form-group" style="display:none;">
+        @Html.LabelFor(model => model.Finalizada, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.CheckBoxFor(model => model.Finalizada, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Finalizada, "", new { @class = "text-danger" })
+        </div>
+    </div>
+   
+
+
+    <div class="form-group">
+        <div class=" col-md-12">
+            <input type="submit" value="Guardar" class="btn btn-default" />
+            <a href="@Url.Action("Index", "ActividadCumplimiento" )" class="ayudaTitulos">
+                <span>Volver al inicio</span> <img style="width: 5%;" src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+            </a>
+        </div>
+    </div>
+
+</div>
+}
+
+
+
+<script type="text/javascript">
+
+    function ShowSelected() {
+        var cod = document.getElementById("Frecuencia").value;
+        var period = document.getElementById("period");
+        var daily_every = document.getElementById("daily_every").value;
+        var weekly_every = document.getElementById("weekly_every").value;
+        var monthly_every = document.getElementById("monthly_every").value;
+        var mestre_every = document.getElementById("mestre_every").value;
+        var dayly = document.getElementById("select_daily");
+        var weekly = document.getElementById("select_weekly");
+        var monthly = document.getElementById("select_monthly");
+        var smestre = document.getElementById("select_mestre");
+        var norepeat = document.getElementById("select_norepeat");
+        var frecuencia = document.getElementById("Frecuencia");
+
+        if (cod == "2") {
+            dayly.style.display = "";
+            norepeat.style.display = "none";
+            weekly.style.display = "none";
+            monthly.style.display = "none";
+            smestre.style.display = "none";
+            period.value = daily_every;
+            frecuencia.value = 2;
+
+        } else if (cod == "3") {
+            dayly.style.display = "none";
+            norepeat.style.display = "none";
+            weekly.style.display = "";
+            monthly.style.display = "none";
+            smestre.style.display = "none";
+            period.value = weekly_every;
+            frecuencia.value = 3;
+        } else if (cod == "4") {
+            document.getElementById("monthly_every").display = "";
+            dayly.style.display = "none";
+            norepeat.style.display = "none";
+            weekly.style.display = "none";
+            smestre.style.display = "none";
+            monthly.style.display = "";
+            period.value = monthly_every;
+            frecuencia.value = 4;
+        } else if (cod == "8") {
+            dayly.style.display = "none";
+            norepeat.style.display = "none";
+            weekly.style.display = "none";
+            monthly.style.display = "none";
+            smestre.style.display = "";
+            period.value = mestre_every;
+            frecuencia.value = 8;
+        } else if (cod == "9") {
+            dayly.style.display = "none";
+            norepeat.style.display = "none";
+            weekly.style.display = "none";
+            monthly.style.display = "none";
+            smestre.style.display = "";
+            period.value = mestre_every;
+            frecuencia.value = 9;
+        } else if (cod == "10") {
+            dayly.style.display = "none";
+            norepeat.style.display = "none";
+            weekly.style.display = "none";
+            monthly.style.display = "none";
+            smestre.style.display = "";
+            period.value = mestre_every;
+            frecuencia.value = 10;
+        
+        } else {
+            dayly.style.display = "none";
+            norepeat.style.display = "";
+            weekly.style.display = "none";
+            monthly.style.display = "none";
+            smestre.style.display = "none";
+            period.value = 0;
+            frecuencia.value = 1;
+        }
+
+    }
+    function changeday() {
+        var daily_every = document.getElementById("daily_every").value;
+        var period = document.getElementById("period");
+        period.value = daily_every;
+
+    }
+    function changeweek() {
+
+        var day = document.getElementById("day").value;
+        var weekly1 = document.getElementById("weekly1");
+        var weekly2 = document.getElementById("weekly2");
+        var weekly3 = document.getElementById("weekly3");
+        var weekly4 = document.getElementById("weekly4");
+        var weekly5 = document.getElementById("weekly5");
+        var weekly6 = document.getElementById("weekly6");
+        var weekly_0 = document.getElementById("weekly_0");
+        var weekly_1 = document.getElementById("weekly_1").value;
+        var weekly_2 = document.getElementById("weekly_2").value;
+        var weekly_3 = document.getElementById("weekly_3").value;
+        var weekly_4 = document.getElementById("weekly_4").value;
+        var weekly_5 = document.getElementById("weekly_5").value;
+        var weekly_6 = document.getElementById("weekly_6").value;
+        var period = document.getElementById("period");
+        var weekly_every = document.getElementById("weekly_every").value;
+        day = weekly_every;
+        console.log(day);
+        console.log(weekly_every);
+        period.value = weekly_every;
+
+        if (weekly_0.checked == true) {
+            day0 = weekly_every;
+        }
+        weekly1 = weekly_1;
+        weekly2 = weekly_2;
+        weekly3 = weekly_3;
+        weekly4 = weekly_4;
+        weekly5 = weekly_5;
+        weekly6 = weekly_6;
+
+    }
+    function changemonth() {
+        var period = document.getElementById("period");
+        var monthly_every = document.getElementById("monthly_every").value;
+        period.value = monthly_every;
+
+    }
+    function changemestre() {
+        var period = document.getElementById("period");
+        var mestre_every = document.getElementById("mestre_every").value;
+        period.value = mestre_every;
+
+    }
+</script>
+

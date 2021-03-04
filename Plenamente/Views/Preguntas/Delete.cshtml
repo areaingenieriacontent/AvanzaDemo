@@ -1,0 +1,52 @@
+﻿@model Plenamente.Models.Pregunta
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Eliminar preguntas</p><br />
+</div>
+
+<div class="centrarContenido">
+
+    <dl class="dl-horizontal">
+
+
+
+        <dt>
+            Pregunta:
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Preg_Titulo)
+            <br />
+        </dd>
+
+        <dt>
+            <br />
+            Fecha de registro:
+        </dt>
+
+        <dd>
+            <br />
+            @Html.DisplayFor(model => model.Preg_Registro)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <br />
+            <input type="submit" value="Eliminar" class="btn btn-default" /> 
+      
+    }
+</div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "Preguntas")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>
+

@@ -1,0 +1,51 @@
+﻿@model Plenamente.Models.ReglaHigiene
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ReglaHigiene</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empresa.Empr_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rhig_Archivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rhig_Archivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rhig_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rhig_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rhig_Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rhig_Registro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Rhig_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,48 @@
+﻿@model PagedList.IPagedList<Plenamente.Models.ExpandedUserDTO>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<section class="contenidoSection">
+    <div class="contenidoDiv">
+        @*Seccion de graficos*@
+        <section class="graficosSection">
+            <div class="graficoA">
+                <center><img src="~/Imagenes/graph (1).png" /></center>
+            </div>
+            <div class="graficoB">
+                <center><img src="~/Imagenes/graph.png" /></center>
+            </div>
+            <div class="graficoC">
+                <center><img src="~/Imagenes/pie-chart.png" /></center>
+            </div>
+            <div class="graficoD">
+                <center><img src="~/Imagenes/graph (2).png" /></center>
+            </div>
+        </section>
+        @*Tareas + Periodico Virtual y modulos*@
+        <section class="tareasmoduloSection">
+            <div class="tareasDiv">
+                <p><img src="~/Imagenes/que-hacer.png" /> &nbsp; &nbsp;Mis tareas</p>
+                <hr class="claseDivicion" />
+            </div>
+            <div class="moduloDiv">
+                <p class="fadeIn two">Módulo de capacitación y periódico virtual.</p>
+                <img class="fadeIn three" src="~/Imagenes/lineas-de-texto.png" />
+                <a class="linkPrincipal" href="http://aprendeyavanza2.com.co/plenamentecap">Ir a Modulos</a>
+            </div>
+        </section>
+        @*Tareas + Grafico Global*@
+        <section class="tareasmoduloSection">
+            <div class="tareasDiv">
+                <p><img src="~/Imagenes/que-hacer.png" /> &nbsp; &nbsp;Actividades</p>
+                <hr class="claseDivicion" />
+            </div>
+            <div class="moduloDiv">
+                <h1 style="text-align: center">Espacio para grafico Global</h1>
+            </div>
+        </section>
+    </div>
+</section>

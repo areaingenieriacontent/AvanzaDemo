@@ -1,0 +1,23 @@
+﻿@model Plenamente.Models.Archivo
+@{
+    ViewBag.Title = "Evidencia";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Agregar Evidencia</h2>
+<div class="container" style="width:40%">
+    @using (Html.BeginForm("SaveRecord", "CargaArchivo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        @Html.DropDownListFor(Model => Model.Cump_Id, ViewBag.CumplimientoList as SelectList, "--Cump--", new { @class = "form-control" });
+        @Html.DropDownListFor(Model => Model.Tdca_id, ViewBag.TipoDocCargaList as SelectList, "--Tdca--", new { @class = "form-control" });
+        @Html.DropDownListFor(Model => Model.Id, ViewBag.UsersList as SelectList, "--User--", new { @class = "form-control" });
+
+        @Html.TextBoxFor(Model => Model.Evid_Nombre, new { @class = "form-control", @placeholder = "Nombre Archivo" })
+        @Html.TextBoxFor(Model => Model.Evid_Archivo, new { @class = "form-control", @type = "file" })
+        @Html.DisplayFor(Model => Model.Evid_Registro)
+
+        <input type="submit" value="Guardar Evidencia" class="btn btn-block btn-primary" />
+
+    }
+</div>

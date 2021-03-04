@@ -1,0 +1,131 @@
+﻿@model Plenamente.Models.ExpandedUserDTO
+@{
+                /**/
+
+                ViewBag.Title = "Create";
+                Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Crear un nueva persona</p>
+</div>
+@using (Html.BeginForm("SaveRecord", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="centrarContenido">
+        <div class="hidden">
+            @Html.EditorFor(model => model.Empr_Nit, new { htmlAttributes = new { @class = "", @value = ViewBag.Empr_Nit } })
+        </div>
+        <h2 class="colorVerdeBack1">Información Básica Del Trabajador</h2>
+        <div class="plegable">
+            <br />
+            <br />
+            Nombres:
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "" } })
+            <br />
+            <br />
+            Apellidos:
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "" } })
+            <br />
+            <br />
+            Tipo de documento:
+            <br />
+            <br />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(model => model.Tdoc_Id, ViewBag.TdocBag as SelectList, "Tipo De Documento", htmlAttributes: new { @class = "estilosSelect", data_required = "true" })
+            @Html.ValidationMessageFor(model => model.Tdoc_Id, "", new { @class = "text-danger" })
+            <br />
+            <br />
+            Documento:
+            <br />
+            <br />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Documento, new { htmlAttributes = new { @class = "estilosSelect" } })
+            @Html.ValidationMessageFor(model => model.Documento, "", new { @class = "text-danger" })
+            <br />
+            <br />
+            Genero:
+            <br />
+            <br />
+            @Html.DropDownListFor(model => model.Gene_Id, ViewBag.Gene_Id as SelectList, "Genero", htmlAttributes: new { @class = "estilosSelect" })
+            <br />
+            <br />
+            Email:
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "" } })
+            <br />
+            <br />
+            Contraseña:
+            <br />
+            <br />
+            @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "" } })
+            <br />
+            <br />
+            Tipo De Usuario:
+            <br />
+            <br />
+            @Html.DropDownList("Roles", null, htmlAttributes: new { @class = "estilosSelect" })
+            <br />
+            <br />
+            Estado Del Trabajador:
+            <br />
+            <br />
+            @Html.DropDownListFor(model => model.Espe_Id, ViewBag.Espe_Id as SelectList, "Estado", htmlAttributes: new { @class = "estilosSelect" })
+            <br />
+            <br />
+        </div>
+        <br />
+        <br />
+        <h2 class="colorVerdeBack1">Información Personal Del Trabajador</h2>
+        <div class="plegable">
+            <br />
+            <br />
+            Licencia De Conducción N°:
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Pers_Licencia, new { htmlAttributes = new { @class = "estilosSelect" } })
+            <br />
+            <br />
+            Fecha De Vencimiento:
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Pers_LicVence, new { htmlAttributes = new { @class = "estilosSelect" } })
+            <br />
+            <br />
+            Categoria De La Licencia:
+            <br />
+            <br />
+            @Html.DropDownListFor(model => model.Cate_Id, ViewBag.Cate_Id as SelectList, "Categoria De La Licencia", htmlAttributes: new { @class = "estilosSelect" })
+            <br />
+            <br />
+            Dirección De Residencia:
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Pers_Direccion, new { htmlAttributes = new { @class = "" } })
+            <br />
+            <br />
+            Contacto De Emergencia:
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Pers_ContactoEmeg, new { htmlAttributes = new { @class = "" } })
+            <br />
+            <br />
+            Número De Emergencia:
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Pers_TelefonoEmeg, new { htmlAttributes = new { @class = "estilosSelect" } })
+            <br />
+            <br />
+        </div>
+        <input type="submit" value="Guardar" class="btn btn-default" />
+    </div>
+    <div class="contenidoVolver">
+        <a href="@Url.Action("Manageusers", "Admin")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+    </div>
+}

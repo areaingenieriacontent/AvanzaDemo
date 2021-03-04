@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Plenamente.Models.Cumplimiento>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AutoEvaluacion.Auev_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemEstandar.Iest_Desc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cump_Cumple)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cump_Nocumple)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cump_Justifica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cump_Nojustifica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cump_Observ)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cump_Registro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AutoEvaluacion.Auev_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemEstandar.Iest_Desc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cump_Cumple)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cump_Nocumple)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cump_Justifica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cump_Nojustifica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cump_Observ)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cump_Registro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Cump_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Cump_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Cump_Id })
+        </td>
+    </tr>
+}
+
+</table>

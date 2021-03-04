@@ -1,0 +1,51 @@
+﻿@model Plenamente.Models.Estandar
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Estandar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Criterio.Crit_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Criterio.Crit_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Esta_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Esta_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Esta_Porcentaje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Esta_Porcentaje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Esta_Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Esta_Registro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Esta_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

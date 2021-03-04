@@ -1,0 +1,140 @@
+﻿@model Plenamente.Models.ViewModel.PlandetrabajoActividadesViewModel
+@using Plenamente.App_Tool;
+@using Plenamente.Models.ViewModel;
+
+<div class="colorVerdeBack">
+    <p>Crear plan de trabajo</p>
+</div>
+
+<div class="contenidoCuerpo marco">
+    <div class="panel panel-default text-center justify-content-center">
+        <div class="form-group justify-content-center">
+
+            @Html.EditorFor(model => model.NombrePlanTrabajo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.NombrePlanTrabajo, "", new { @class = "text-danger" })
+
+        </div>
+
+
+        <table class="table table-bordered text-center justify-content-center">
+            <tr>
+                <th>
+                    Nombre Plan
+                </th>
+                <th>
+                    Actividad
+                </th>
+                <th>
+                    Responsable
+                </th>
+                <th>
+                    Opciones
+                </th>
+            </tr>
+
+
+            @foreach (var item in ((PaginadorGenerico<ActividadesAsignadasPlanDeTrabajoViewModel>)ViewBag.actividadesAsignadas).Resultado)
+            {
+                <tr>
+                    <td>
+                        @item.NombrePlanTrabajo
+                    </td>
+                    <td>
+                        @item.DescripcionCumplimiento
+                    </td>
+                    <td>
+                        @item.NombreUser
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="@Url.Action("EliminarActividadPlanTrabajo","PlandeTrabajo" , new { IdUserPlanTrabajo=item.IdUserPlanDeTrabajoActividad })" title="Eliminar">
+                            Eliminar
+                        </a>
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+        @*CÓDIGO PARA EL PAGINADOR DE REGISTROS*@
+        @if (((PaginadorGenerico<ActividadesAsignadasPlanDeTrabajoViewModel>)ViewBag.actividadesAsignadas).Resultado.Count() > 0)
+        {
+            <span>
+                <strong>@ViewBag.actividadesAsignadas.TotalRegistros</strong> registros encontrados
+            </span>
+            <span>&nbsp;|&nbsp;</span>
+            <span>
+                Página <strong>@(ViewBag.actividadesAsignadas.PaginaActual)</strong> de
+                <strong>@ViewBag.actividadesAsignadas.TotalPaginas</strong>
+            </span>
+            <span>&nbsp;|&nbsp;</span>
+        }
+        else
+        {
+            <span>No hay resultados para esta búsqueda</span>
+            <span>&nbsp;|&nbsp;</span>
+        }
+
+        @if (ViewBag.actividadesAsignadas.PaginaActual > 1)
+        {
+            @Html.ActionLink("<<", "ActividadesplanTra", new { IdPlantTrabajo = Model.IdPlantTrabajo,pagina = 1 },
+                            new { @class = "btn btn-sm btn-default" })
+            <span></span>
+            @Html.ActionLink("Anterior", "ActividadesplanTra", new { IdPlantTrabajo = Model.IdPlantTrabajo, pagina = ViewBag.actividadesAsignadas.PaginaActual - 1 },
+                            new { @class = "btn btn-sm btn-default" })
+        }
+        else
+        {
+            @Html.ActionLink("<<", "ActividadesplanTra", new { IdPlantTrabajo = Model.IdPlantTrabajo, pagina = 1 },
+                            new { @class = "btn btn-sm btn-default disabled" })
+            <span></span>
+            @Html.ActionLink("Anterior", "ActividadesplanTra", new { IdPlantTrabajo = Model.IdPlantTrabajo, pagina = 1 },
+                            new { @class = "btn btn-sm btn-default disabled" })
+        }
+        <span></span>
+        @if (ViewBag.actividadesAsignadas.PaginaActual < ViewBag.actividadesAsignadas.TotalPaginas)
+        {
+            @Html.ActionLink("Siguiente", "ActividadesplanTra", new { IdPlantTrabajo = Model.IdPlantTrabajo,pagina = ViewBag.actividadesAsignadas.PaginaActual + 1 },
+                            new { @class = "btn btn-sm btn-default" })
+            <span></span>
+            @Html.ActionLink(">>", "Index", new { IdPlantTrabajo = Model.IdPlantTrabajo,pagina = ViewBag.actividadesAsignadas.TotalPaginas },
+                            new { @class = "btn btn-sm btn-default" })
+        }
+        else
+        {
+            @Html.ActionLink("Siguiente", "ActividadesplanTra", new { IdPlantTrabajo = Model.IdPlantTrabajo,pagina = ViewBag.actividadesAsignadas.TotalPaginas - 1 },
+                            new { @class = "btn btn-sm btn-default disabled" })
+            <span></span>
+            @Html.ActionLink(">>", "Index", new { IdPlantTrabajo = Model.IdPlantTrabajo, pagina = ViewBag.actividadesAsignadas.TotalPaginas },
+                            new { @class = "btn btn-sm btn-default disabled" })
+        }
+
+
+
+        <div class="form-group">
+            <a class="btn btn-success" href="@Url.Action("Crear","ActividadCumplimiento" , new { idPlanDeTrabajo=@Model.IdPlantTrabajo })" title="Crear Actividad">
+                Crear Actividad
+            </a>
+            <hr />
+        </div>
+        @using (Html.BeginForm())
+        {
+            <input type="hidden" name="IdPlantTrabajo" id="IdPlantTrabajo" value=@Model.IdPlantTrabajo />
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <label class="text-danger">@ViewBag.TextError</label>
+
+            </div>
+        }
+
+    </div>
+
+</div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("IndexM", "PlandeTrabajo")" class="ayudaTitulos">
+        <span>Volver a los planes de trabajo</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+    </a>
+</div>
+

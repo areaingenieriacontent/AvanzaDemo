@@ -1,0 +1,56 @@
+﻿@model Plenamente.Models.Archivo
+
+@{
+    ViewBag.Title = "Upload";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Upload</h2>
+
+
+
+<body>
+    <div>
+        @using (Html.BeginForm("Upload", "CargaArchivo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {<br />
+         <table cellpadding="5">
+             <thead>
+                 <tr>
+                     <td colspan="2" style="text-align:center">Sr. DotNet Developer</td>
+                 </tr>
+             </thead>
+             <tr>
+                 <td colspan="2"> Please fill <span style="color:red">(*)</span> out below fields and click Apply for this position </td>
+             </tr>
+             <tr>
+                 <td> @Html.LabelFor(m => m.Evid_Nombre)<b style="color:red"> *</b> </td>
+                 <td> @Html.TextBoxFor(m => m.Evid_Nombre) </td>
+             </tr>
+             <tr>
+                 <td> @Html.LabelFor(m => m.Evid_Archivo)<b style="color:red"> *</b> </td>
+                 <td> @Html.TextBoxFor(m => m.Evid_Archivo, new { type = "file" }) </td>
+             </tr>
+             @*Campo de Registro oculto*@
+             <div class="form-group">
+                 <label asp-for="Archivo" class="col-md-4 control-label">@Html.DisplayFor(Model => Model.Evid_Registro)</label>
+             </div>
+             <br />
+             <label> @Html.DropDownList("Cump_Id", null, htmlAttributes: new { @class = "estilosSelect" }) </label>
+             <br />
+             <label> @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" }) </label>
+             <br />
+             <label> @Html.DropDownList("Tdca_id", null, htmlAttributes: new { @class = "estilosSelect" }) </label>
+             <br />
+             <label> @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" }) </label>
+             <tr>
+                 <td colspan="2" style="text-align:right"> <input type="submit" id="Apply" value="Apply" /> </td>
+             </tr>
+         </table>}
+    </div>
+    
+
+</body>
+
+<div>
+</div>
+        @Html.ActionLink("Back to List", "Index")

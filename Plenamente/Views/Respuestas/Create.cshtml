@@ -1,0 +1,48 @@
+﻿@model Plenamente.Models.Respuesta
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Crear una nueva respuesta</p>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="centrarContenido">
+
+    Respuesta:
+
+    @Html.EditorFor(model => model.Resp_Nom, new { htmlAttributes = new { } })
+    <br />
+    <br />
+    Tipo Respuesta:
+    <a href="#" class="ayudaTitulos"><span>1 - Area de texto<br />2 - Selección Multiple<br />3 - Selección Unica<br />4 - Fecha</span><img src="~/Imagenes/question.png" /><p></p></a>
+    @Html.EditorFor(model => model.Resp_Tipo, new { htmlAttributes = new { @class = "", @type = "number"} })
+
+
+
+    <div class="form-group">
+        @*Campo de Registro oculto*@
+        <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>@Html.DisplayFor(Model => Model.Resp_Registro)  </label>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden> @Html.DropDownList("Preg_Id", null, htmlAttributes: new { @class = "form-control" })</label>
+    </div>
+
+    <input type="submit" value="Create" class="btn btn-default" />
+
+</div>
+}
+
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "Respuestas", new {id = @ViewBag.idPregunta , idPregunta = @ViewBag.idPregunta}, null)" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

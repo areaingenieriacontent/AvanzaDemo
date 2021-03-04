@@ -1,0 +1,94 @@
+﻿@model Plenamente.App_Tool.PaginadorGenerico<Plenamente.Models.PlandeTrabajo>
+
+
+<div class="colorVerdeBack">
+    <p>
+        Planes de trabajo
+        <a href="#" class="ayudaTitulos"><span style="width: 300px">Aquí encontrará los planes de trabajo, así mismo, podrá crear, borrar o editar el elemento seleccionado</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /></a>
+    </p>
+</div>
+<div class="contenidoCuerpo marco">
+    <br />
+    <table class="table table-bordered text-center justify-content-center">
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Actividades
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Resultado)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plat_Nom)
+                </td>
+                <td>
+                    <a class="btn btn-success" href="@Url.Action("Actividadesplantra", "PlandeTrabajo", new { IdPlantTrabajo = item.Plat_Id })" title="Ver Actividades">
+                        Ver Actividades
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+
+    @*CÓDIGO PARA EL PAGINADOR DE REGISTROS*@
+    @if (Model.Resultado.Count() > 0)
+    {
+        <span>
+            <strong>@Model.TotalRegistros</strong> registros encontrados
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            Página <strong>@(Model.PaginaActual)</strong> de
+            <strong>@Model.TotalPaginas</strong>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+    }
+    else
+    {
+        <span>No hay resultados para esta búsqueda</span>
+        <span>&nbsp;|&nbsp;</span>
+    }
+
+    @if (Model.PaginaActual > 1)
+    {
+        @Html.ActionLink("<<", "IndexM", new { pagina = 1 },
+                        new { @class = "btn btn-sm btn-default" })
+        <span></span>
+        @Html.ActionLink("Anterior", "IndexM", new { pagina = Model.PaginaActual - 1 },
+                        new { @class = "btn btn-sm btn-default" })
+    }
+    else
+    {
+        @Html.ActionLink("<<", "IndexM", new { pagina = 1 },
+                        new { @class = "btn btn-sm btn-default disabled" })
+        <span></span>
+        @Html.ActionLink("Anterior", "IndexM", new { pagina = 1 },
+                        new { @class = "btn btn-sm btn-default disabled" })
+    }
+    <span></span>
+    @if (Model.PaginaActual < Model.TotalPaginas)
+    {
+        @Html.ActionLink("Siguiente", "IndexM", new { pagina = Model.PaginaActual + 1 },
+                        new { @class = "btn btn-sm btn-default" })
+        <span></span>
+        @Html.ActionLink(">>", "IndexM", new { pagina = Model.TotalPaginas },
+                        new { @class = "btn btn-sm btn-default" })
+    }
+    else
+    {
+        @Html.ActionLink("Siguiente", "IndexM", new { pagina = Model.TotalPaginas - 1 },
+                        new { @class = "btn btn-sm btn-default disabled" })
+        <span></span>
+        @Html.ActionLink(">>", "IndexM", new { pagina = Model.TotalPaginas },
+                        new { @class = "btn btn-sm btn-default disabled" })
+    }
+</div>
+
+

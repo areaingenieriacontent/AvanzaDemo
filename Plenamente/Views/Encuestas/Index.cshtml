@@ -1,0 +1,64 @@
+﻿@model PagedList.IPagedList<Plenamente.Models.Encuesta>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Encuestas</p>
+</div>
+
+<div class="contenedorBotones">
+    <form asp-action="Index" method="get">
+        <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Buscar..." />
+        <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
+        <a href="@Url.Action("Index", "Encuestas", null)" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "Encuestas", null)" class="ayudaTitulos"><span>Crear nueva encuesta</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+    </form>
+</div>
+<table id="tablaVista" class="tablaVista">
+    <thead class="cabeceraTabla">
+        <tr>
+            <th class="colorVerde">
+                Nombre 
+            </th>
+            <th class="colorVerde">
+                Fecha Vencimiento
+            </th>
+            <th class="colorVerde">
+                Estado
+            </th>
+
+            <th class="colorVerde"></th>
+        </tr>
+    </thead>
+    <tbody class="cuerpoTabla">
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Encu_Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Encu_Vence)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Encu_Estado)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Encu_Id }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Encu_Id }) |
+                @Html.ActionLink("Ver Preguntas", "Index", "Preguntas", new { id = item.Encu_Id, idEncuesta = item.Encu_Id }, null)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<div class="paginacionLista">
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>

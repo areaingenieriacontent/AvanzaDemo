@@ -1,0 +1,35 @@
+﻿@model Plenamente.Models.TipoDocumento
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TipoDocumento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tdoc_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tdoc_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tdoc_Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tdoc_Registro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Tdoc_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

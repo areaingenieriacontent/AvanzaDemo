@@ -1,0 +1,118 @@
+﻿@model PagedList.IPagedList<Plenamente.Models.ExpandedUserDTO>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Manageusers";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="colorVerdeBack">
+    <p>Cargos de la empresa </p>
+</div>
+<div class="contenedorBotones">
+    <form asp-action="Index" method="get">
+        <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
+        <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
+        <a href="@Url.Action("Index", "admin")" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "admin", new {Empr_Nit = @ViewBag.Empr_Nit})" class="ayudaTitulos"><span>Crear cargo individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+    </form>
+</div>
+<table id="tablaVista" class="tablaVista">
+    <thead class="cabeceraTabla">
+        <tr>
+            <th class="colorVerde">
+                Nombres
+            </th>
+            <th class="colorVerde">
+                Apellidos
+            </th>
+            <th class="colorVerde">
+                Documento
+            </th>
+            <th class="colorVerde">
+                Correo
+            </th>
+            <th class="colorVerde">
+                Centro De Trabajo
+            </th>
+            <th class="colorVerde">
+                Ciudad
+            </th>
+            <th class="colorVerde">
+                Cargo
+            </th>
+            <th class="colorVerde">
+                Proceso
+            </th>
+            <th class="colorVerde">
+                Área de trabajo
+            </th>
+            <th class="colorVerde">
+                Jefe
+            </th>
+            <th class="colorVerde">
+                Estado
+            </th>
+            <th class="colorVerde"></th>
+            <th>
+                Modal
+            </th>
+        </tr>
+    </thead>
+    <tbody class="cuerpoTabla">
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellidos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Documento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.SedeCiudad.Sciu_Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ciudad.Ciud_Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CargoEmpresa.Cemp_Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JornadaEmpresa.Jemp_Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AreaEmpresa.Aemp_Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jefe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoPersona.Espe_Nom)
+            </td>*@
+            <td>
+                @Html.ActionLink("Editar", "EditUser", new { UserName = item.UserName }) |
+                @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
+                {
+                    @Html.ActionLink("Borrar", "DeleteUser", new { UserName = item.UserName },
+                    new { onclick = "return confirm('Are you sure you wish to delete this user?');" })
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Detalles","Correctuser", new { Username = item.UserName })
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<div class="paginacionLista">
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>

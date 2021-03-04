@@ -1,0 +1,14 @@
+ optionsBuilder.UseSqlServer("Server=172.50.3.52;Database=SST;Trusted_Connection=False;User ID=Miguel;Password=miguel123");
+  var connection = @"Server=172.50.3.52;Database=SST;Trusted_Connection=False;User ID=Carlos;Password=Deuce11721;ConnectRetryCount=0";
+
+ <div class="form-group">
+                <label asp-for="CargRegistro" class="col-md-4 control-label">@Html.DisplayFor(Model => Model.CargRegistro)</label>
+  </div>
+
+
+public Cargo()
+        {
+           
+            CargRegistro = DateTime.Now;
+        }
+

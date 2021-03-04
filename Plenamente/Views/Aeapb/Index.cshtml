@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Plenamente.Models.Empresa>
+@{
+    ViewBag.Title = "Autoevaluación SST";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="colorVerdeBack">
+    <p>Checklist Apb</p>
+</div>
+<div class="container">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table table-bordered">
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr scope="row">
+                    <th scope="col">
+                        Nombre de la Empresa:  (+)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Empr_Nom)
+                    </td>
+                    <th>
+                        NIT:   (+)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Empr_Nit)
+                    </td>
+                    <th>
+                        Nivel de Riesgo:   (+)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Empr_Afiarl)
+                    </td>
+                    <th>
+                        Fecha de Evaluación:  (+)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Empr_Registro)
+                    </td>
+                </tr>
+                <tr scope="row">
+                    <th scope="col">
+                        Dirección:  (+)
+                    </th>
+                    <td colspan="3">
+                        @Html.DisplayFor(modelItem => item.Empr_Nom)
+                    </td>
+                    <th>
+                        Ciudad:  (+)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Empr_Nit)
+                    </td>
+                    <th>
+                        Teléfono:  (+)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Empr_Afiarl)
+                    </td>
+
+                </tr>
+                <tr scope="row">
+                    <th scope="col">
+                        No de Trabajadores:  (+)
+                    </th>
+                    <td colspan="2">
+                        @Html.DisplayFor(modelItem => item.Empr_Nom)
+                    </td>
+                    <th>
+                        No de Centros de Trabajo:  (+)
+                    </th>
+                    <td colspan="2">
+                        @Html.DisplayFor(modelItem => item.Empr_Nit)
+                    </td>
+                    <th>
+                        ARL:  (+)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Empr_Afiarl)
+                    </td>
+
+                </tr>
+            }
+        <tbody>
+    </table>
+</div>

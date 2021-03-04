@@ -1,0 +1,44 @@
+﻿@model Plenamente.Models.AreaEmpresa
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Editar encuesta</p>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="centrarContenido">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Aemp_Id)
+
+        @Html.EditorFor(model => model.Aemp_Nom, new { htmlAttributes = new { @class = "", @placeholder = "Editar" } })
+
+
+        <div class="form-group">
+            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>  @Html.DropDownList("Empr_Nit", null, htmlAttributes: new { @class = "form-control" })</label>
+        </div>
+
+        <div class="form-group">
+            @*Campo de Registro oculto*@
+            <label asp-for="AreaRegistro" class="col-md-4 control-label" hidden>@Html.DisplayFor(Model => Model.Aemp_Registro)  </label>
+        </div>
+
+ 
+                <input type="submit" value="Actualizar" class="btn btn-default" />
+     
+    </div>
+}
+
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "AreaEmpresas")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

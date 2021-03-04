@@ -1,0 +1,87 @@
+﻿@model Plenamente.Models.ViewModel.PlandetrabajoActividadesViewModel
+@using Plenamente.App_Tool;
+@using Plenamente.Models.ViewModel;
+
+@{
+    ViewBag.Title = "Eliminar plan de trabajo";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="colorVerdeBack">
+    <p>Eliminar plan de trabajo</p>
+</div>
+
+<div class="contenidoCuerpo">
+    <div class="panel panel-default text-center justify-content-center">
+        @using (Html.BeginForm())
+        {
+            <input type="hidden" name="IdPlantTrabajo" id="IdPlantTrabajo" value=@Model.IdPlantTrabajo />
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NombrePlanTrabajo, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.NombrePlanTrabajo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.NombrePlanTrabajo, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FechaInicio, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.FechaInicio, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.FechaInicio, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FechaFin, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.FechaFin, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.FechaFin, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        }
+        <table class="table table-bordered text-center justify-content-center">
+            <tr>
+                <th>
+                    Nombre Plan
+                </th>
+                <th>
+                    Actividad
+                </th>
+                <th>
+                    Responsable
+                </th>
+            </tr>
+
+
+            @foreach (var item in (List<ActividadesAsignadasPlanDeTrabajoViewModel>)ViewBag.actividadesAsignadas)
+            {
+                <tr>
+                    <td>
+                        @item.NombrePlanTrabajo
+                    </td>
+                    <td>
+                        @item.DescripcionCumplimiento
+                    </td>
+                    <td>
+                        @item.NombreUser
+                    </td>
+                </tr>
+            }
+
+        </table>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Eliminar" class="btn btn-danger" />
+            </div>
+        }
+    </div>
+   
+
+</div>
+
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "PlandeTrabajo")" class="ayudaTitulos">
+        <span>Volver a los planes de trabajo</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+    </a>
+</div>
+

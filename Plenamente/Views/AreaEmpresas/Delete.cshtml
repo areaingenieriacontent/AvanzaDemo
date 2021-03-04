@@ -1,0 +1,44 @@
+﻿@model Plenamente.Models.AreaEmpresa
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+    <div class="colorVerdeBack">
+        <p>Eliminar Áreas</p><br />
+    </div>
+    <div class="centrarContenido">
+        <dl class="dl-horizontal">
+
+            <dt>
+                Nombre del área:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Aemp_Nom)
+            </dd>
+
+            <dt>
+                Ultima actualización:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Aemp_Registro)
+            </dd>
+
+        </dl>
+        <br />
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Eliminar" class="btn btn-default" />
+            </div>
+        }
+    </div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "AreaEmpresas", null)" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>

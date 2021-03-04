@@ -1,0 +1,56 @@
+﻿@model PagedList.IPagedList<Plenamente.Models.Pregunta>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";                                         
+        }
+
+<div class="colorVerdeBack">
+    <p>Preguntas</p>
+</div>
+
+<div class="contenedorBotones">
+    <form asp-action="Index" method="get">
+        <div class="hidden">
+            <input type="text" name="idEncuesta" value="@ViewBag.idEncuesta" class="invisible" />
+        </div>
+        <input type="text" id="buscarDato" name="SearchString" value="@ViewData["CurrentFilter"]" />
+        <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
+        <a href="@Url.Action("Index", "Preguntas", new {idEncuesta = @ViewBag.idEncuesta})" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "Preguntas", new {idEncuesta = @ViewBag.idEncuesta})" class="ayudaTitulos"><span>Crear pregunta</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+    </form>
+</div>
+
+<table id="tablaVista" class="tablaVista">
+    <thead class="cabeceraTabla">
+        <tr>
+            <th class="colorVerde">
+                Titulo de la pregunta
+            </th>
+            <th class="colorVerde"></th>
+        </tr>
+    </thead>
+    <tbody class="cuerpoTabla">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preg_Titulo)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", "Preguntas", new { id = item.Preg_Id, idEncuesta = item.Encu_Id }, null) |
+                    @Html.ActionLink("Eliminar", "Delete", "Preguntas", new { id = item.Preg_Id, idEncuesta = item.Encu_Id }, null) |
+                    @Html.ActionLink("Ver Opciones", "Index", "Respuestas", new { id = item.Preg_Id, idPregunta = item.Preg_Id }, null)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="paginacionLista">
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { ViewBag.idEncuesta, page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+</div>
+    <div class="contenidoVolver">
+        <a href="@Url.Action("Index", "Encuestas")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+    </div>

@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Plenamente.Models.ActiCumplimiento>
+
+@{
+    ViewBag.Title = "Plan de Trabajo";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Plan de Trabajo</p>
+</div>
+<br/>
+<br />
+<p>
+    @Html.ActionLink("Crear Nuevo Plan de Trabajo", "Create")
+</p>
+<div class="container" style=" border:1px solid;border-color: #A59D9B; padding:10px 10px 10px 10px;">
+    <table class="table">
+        <tr>
+            <th >
+                <p>Responsable</p>
+            </th>
+            <th>
+                <p>Empresa</p>
+            </th>
+            <th>
+                <p>@Html.DisplayNameFor(model => model.Frecuencia.Frec_Nom)</p>
+            </th>
+            <th>
+                <p>Objetivo Empresa</p>
+            </th>
+            <th>
+                <p> @Html.DisplayNameFor(model => model.Periodo.Peri_Nom)</p>
+            </th>
+            <th>
+                <p> @Html.DisplayNameFor(model => model.Acum_Desc)</p>
+            </th>
+            <th>
+                <p>@Html.DisplayNameFor(model => model.Acum_Porcentest)</p>
+            </th>
+            <th>
+                <p>@Html.DisplayNameFor(model => model.Acum_Ejec)</p>
+            </th>
+            <th>
+                <label asp-for="AcumRegis" class="col-md-4 control-label" hidden> @Html.DisplayNameFor(model => model.Acum_Registro)</label>
+            </th>
+            <th>
+                <p> @Html.DisplayNameFor(model => model.Acum_IniAct)</p>
+            </th>
+            <th>
+                <p>@Html.DisplayNameFor(model => model.Acum_FinAct)</p>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApplicationUser.Pers_Nom1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Frecuencia.Frec_Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ObjEmpresa.Oemp_Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Periodo.Peri_Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Acum_Desc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Acum_Porcentest)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Acum_Ejec)
+                </td>
+                <td>
+                    <label asp-for="AcumRegistro" class="col-md-4 control-label" hidden>@Html.DisplayFor(modelItem => item.Acum_Registro)</label>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Acum_IniAct)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Acum_FinAct)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Acum_Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Acum_Id }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Acum_Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

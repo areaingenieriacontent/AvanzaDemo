@@ -1,0 +1,66 @@
+﻿@model Plenamente.Models.ViewModel.EvidenciaCumplimientoViewModel
+
+@{
+    ViewBag.Title = "CargaEvidencia";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<style>
+    input[type=text],
+    input[type=email] {
+        border: 1px solid #ced4da;
+    }
+</style>
+<div class="colorVerdeBack">
+    <p>Cargar evidencia</p>
+</div>
+<div class="contenidoCuerpo">
+    @using (Html.BeginForm("CargaEvidencia", "AutoEvaluacion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {        
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="IdCumplimiento" id="IdCumplimiento" value="@Model.IdCumplimiento" />
+        <div class="form-group">
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group ">
+                    @Html.LabelFor(model => model.NombreDocumento, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.NombreDocumento, new { htmlAttributes = new { @class = "form-control", type="search" } })
+                    @Html.ValidationMessageFor(model => model.NombreDocumento, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TipoDocumento, htmlAttributes: new { @class = "control-label" })
+                    @Html.DropDownListFor(x => x.TipoDocumento, (SelectList)ViewBag.Tdca_id, "Tipo de documento", new { @class = "form-control ", id = "TipoDocumento" })
+                    @Html.ValidationMessageFor(model => model.TipoDocumento, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Responsable, htmlAttributes: new { @class = "control-label" })
+                    @Html.DropDownListFor(x => x.Responsable, (SelectList)ViewBag.users, "Responsable", new { @class = "form-control", id = "Responsable" })
+                    @Html.ValidationMessageFor(model => model.Responsable, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @*Html.LabelFor(model => model.Archivo, htmlAttributes: new { @class = "control-label" })*@
+                    <input type="file" name="Archivo">
+                    @Html.ValidationMessageFor(model => model.Archivo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <label class="text-success">@ViewBag.exitoso</label>
+                <label class="text-danger">@ViewBag.falla</label>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-10">
+                    <input type="submit" value="Guardar" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div class="contenidoVolver ">
+    <a href="@Url.Action("AutoevaluacionSST", "AutoEvaluacion")" class="ayudaTitulos">
+        <span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+    </a>
+</div>

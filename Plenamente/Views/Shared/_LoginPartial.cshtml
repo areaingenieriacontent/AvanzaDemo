@@ -1,0 +1,67 @@
+﻿@using Microsoft.AspNet.Identity
+<div class="titulosBannerP">
+    @if (Request.IsAuthenticated)
+    {
+
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row titulosBanner">
+                <div class="col-lg-6 col-sm-6 col-md-6">
+                    @Html.ActionLink("Bienvenido A Plenamente Trabajando " + User.Identity.GetUserName() + "! ", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })<img src="~/Imagenes/usuarioblanco.png" style="width:3%" />
+                </div>
+                <div class="col-lg-6 col-sm-6 col-md-6 text-right">
+                    <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a> <img src="~/Imagenes/cerracuenta.png" style="padding-right: 5px;  padding-top: 5px;     width: 3%;" />
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="contenidoMenu">
+            <ul>
+                <li>Bienvenido a Plenamente Trabajando</li>
+            </ul>
+        </div>
+    }
+
+</div>
+
+@*@using Microsoft.AspNet.Identity
+    <div class="titulosBannerP">
+        @if (Request.IsAuthenticated)
+        {
+
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row titulosBanner">
+                    <div class="col-lg-6 col-sm-6 col-md-6">
+                        @Html.ActionLink("Bienvenido A Plenamente Trabajando " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-md-6 text-right">
+                        @Html.ActionLink("Hola, " + User.Identity.GetUserName(), "Index", "Home", routeValues: null, htmlAttributes: new { title = "Manage" }) <img src="~/Imagenes/usuarioblanco.png"style="width:3%"/>
+                    </div>
+                </div>
+
+                <div class="row bannerPrincipal " style="margin-top: 5px;">
+                    <div class="col-lg-10 col-sm-10 col-md-10">
+                    </div>
+                    <div class="col-lg-2 col-sm-2 col-md-2 text-right" style="background:white;">
+                        <img src="~/Imagenes/cerracuenta.png" style="padding-right: 5px;  padding-top: 5px;     width: 15%;" /> <a href="javascript:document.getElementById('logoutForm').submit()" style="color: #8cc63f;">Cerrar sesión</a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="contenidoMenu">
+                <ul>
+                    <li>Bienvenido a Plenamente Trabajando</li>
+                </ul>
+            </div>
+        }
+
+    </div>*@

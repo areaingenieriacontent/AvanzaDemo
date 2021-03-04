@@ -1,0 +1,76 @@
+﻿@model Plenamente.Models.ObjEmpresa
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>
+        Crear un nuevo objetivo
+        <a href="#" class="ayudaTitulos"><span style="width: 300px">Aquí podrá ingresar el nombre del objetivo del SG-SST y la descripción del mismo. </span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /></a>
+
+    </p>
+</div>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="centrarContenido">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form">
+            <div class="col-md-10">
+                Nombre
+                <a href="#" class="ayudaTitulos"><span style="width: 300px;">Aquí asignará el nombre del objetivo (ej. objetivo 1, Cumplimiento Planear, etc.). </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
+                @Html.EditorFor(model => model.Oemp_Nombre, new { htmlAttributes = new { @class = "" } })
+                @Html.ValidationMessageFor(model => model.Oemp_Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form">
+            <div class="col-md-10">
+                Descripción
+                <a href="#" class="ayudaTitulos"><span style="width: 300px;">Aquí describirá de manera detallada el objetivo planeteado. </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
+                @Html.TextAreaFor(m => m.Oemp_Descrip, new { @class = "form-control", @style = "margin: 0px -146.75px 0px 0px;height: 123px;width: 547px;" })
+                @Html.ValidationMessageFor(model => model.Oemp_Descrip, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10" hidden>
+                @Html.EditorFor(model => model.Oemp_Meta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Oemp_Meta, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*Campo de Registro oculto*@
+        <div class="form-group">
+            <label asp-for="ObjetivoEmpresa" class="col-md-4 control-label">@Html.DisplayFor(Model => Model.Oemp_Registro)</label>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10" hidden>
+                @Html.DropDownList("Empr_Nit", null, htmlAttributes: new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Empr_Nit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+    <div class="contenidoVolver">
+        <a href="@Url.Action("Index", "Objempresas")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+    </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,129 @@
+﻿@model IEnumerable<Plenamente.Models.ItemEstandarAfp>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EstandarAfp.Esta_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Desc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Verificar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Porcentaje)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoriaExcepcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Peri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Observa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Registro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Video)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Recurso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Rescursob)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Rescursoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Rescursod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Rescursoe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_Rescursof)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iest_MasInfo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstandarAfp.Esta_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Desc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Verificar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Porcentaje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoriaExcepcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Peri)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Observa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Registro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Video)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Recurso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Rescursob)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Rescursoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Rescursod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Rescursoe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_Rescursof)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iest_MasInfo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Iest_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Iest_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Iest_Id })
+        </td>
+    </tr>
+}
+
+</table>

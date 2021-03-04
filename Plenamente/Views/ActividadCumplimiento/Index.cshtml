@@ -1,0 +1,133 @@
+﻿@model Plenamente.App_Tool.PaginadorGenerico<Plenamente.Models.ProgamacionTareas>
+    @using Plenamente.App_Tool;
+    @using Plenamente.Models.ViewModel;
+    @using Plenamente.Models;
+
+    @{
+    ViewBag.Title = "Actividades";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+    }
+    <div class="colorVerdeBack">
+        <p>
+            Actividades
+            <a href="#" class="ayudaTitulos"><span style="width: 300px">Aquí podrá ver las actividades creadas desde su plan de trabajo</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /></a>        </p>
+    </div>
+    <div class="form-group" style="display:none;">
+        <div class="col-md-offset-2 col-md-10">
+            <input onclick="window.location='../ActividadCumplimiento/Create'" type="submit" value="Crear Actividad" class="btn btn-default" />
+        </div>
+    </div>
+    <div class="contenidoCuerpo">
+        <div class="panel panel-default text-center justify-content-center">
+
+            <table class="table table-bordered text-center justify-content-center">
+                <tr>
+                    <th>
+                        Actividad
+                    </th>
+                    <th>
+                        Estado
+                    </th>
+                    <th>
+                        Fecha Ejecución
+                    </th>
+                    <th>
+                        Actividades
+                    </th>
+                </tr>
+
+
+                @foreach (var item in Model.Resultado)
+                {
+                <tr>
+                    <td>
+                        @item.Descripcion
+                    </td>
+                    <td>
+                        <input type="checkbox" checked="@item.Finalizada" disabled />
+                    </td>
+                    <td>
+                        @item.FechaFinal.Day /
+                        @item.FechaFinal.Month /
+                        @item.FechaFinal.Year
+
+                    </td>
+                    <td>
+
+                        <a class="btn btn-info" href="~/ActividadCumplimiento/Details?id=@item.ActiCumplimiento_Id&idpt=@item.Id" title="Editar">
+                            Gestionar
+                        </a>
+                    </td>
+                </tr>
+                }
+
+            </table>
+
+        </div>
+
+
+
+        @*CÓDIGO PARA EL PAGINADOR DE REGISTROS*@
+        @if (Model.Resultado.Count() > 0)
+        {
+        <span>
+            <strong>@Model.TotalRegistros</strong> registros encontrados
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            Página <strong>@(Model.PaginaActual)</strong> de
+            <strong>@Model.TotalPaginas</strong>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        }
+        else
+        {
+        <span>No hay resultados para esta búsqueda</span>
+        <span>&nbsp;|&nbsp;</span>
+        }
+
+        @if (Model.PaginaActual > 1)
+        {
+        @Html.ActionLink("<<", "Index", new { pagina = 1 },
+        new { @class = "btn btn-sm btn-default" })
+        <span></span>
+        @Html.ActionLink("Anterior", "Index", new { pagina = Model.PaginaActual - 1 },
+        new { @class = "btn btn-sm btn-default" })
+        }
+        else
+        {
+        @Html.ActionLink("<<", "Index", new { pagina = 1 },
+        new { @class = "btn btn-sm btn-default disabled" })
+        <span></span>
+        @Html.ActionLink("Anterior", "Index", new { pagina = 1 },
+        new { @class = "btn btn-sm btn-default disabled" })
+        }
+        <span></span>
+        @if (Model.PaginaActual < Model.TotalPaginas)
+        {
+        @Html.ActionLink("Siguiente", "Index", new { pagina = Model.PaginaActual + 1 },
+        new { @class = "btn btn-sm btn-default" })
+        <span></span>
+        @Html.ActionLink(">>", "Index", new { pagina = Model.TotalPaginas },
+        new { @class = "btn btn-sm btn-default" })
+        }
+        else
+        {
+        @Html.ActionLink("Siguiente", "Index", new { pagina = Model.TotalPaginas - 1 },
+        new { @class = "btn btn-sm btn-default disabled" })
+        <span></span>
+        @Html.ActionLink(">>", "Index", new { pagina = Model.TotalPaginas },
+        new { @class = "btn btn-sm btn-default disabled" })
+        }
+    </div>
+
+    <div class="contenidoVolver">
+
+        <a href="@Url.Action("Index", "Home" )" class="ayudaTitulos">
+            <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+        </a>
+
+
+
+    </div>
+

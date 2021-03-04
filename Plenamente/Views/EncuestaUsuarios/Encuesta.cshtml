@@ -1,0 +1,168 @@
+﻿@model IEnumerable<Plenamente.Models.ViewModel.PreguntaViewModel>
+
+@{
+    ViewBag.Title = "Encuesta";
+    Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Encuesta</p>
+</div>
+
+
+<div class="div">
+    <div class="rowEncuesta rowEncuestaTitle">
+
+        <div class="col-sm-3">
+            PREGUNTA
+        </div>
+        <div class="col-sm-7">
+            RESPUESTA
+        </div>
+        <div class="col-sm-2">
+            <input type="submit" value="Imprimir" class="btn btn-default" onclick="javascript:window.imprimirDIV('ID_DIV');" />
+        </div>
+    </div>
+    <div id="ID_DIV">
+        <link rel="stylesheet" href="~/Content/estilosParciales.css" type="text/css" media="all" />
+
+        @foreach (var item in Model)
+        {
+            <div class="row rowEncuesta">
+
+                <div class="col-sm-3 estiloEncuPre">
+                    @Html.DisplayFor(modelItem => item.Preg_Titulo)
+                </div>
+                <div class="col-sm-9">
+                    @foreach (var respuestas in item.Respuesta)
+                    {
+                        if (item.Preg_Id == respuestas.Preg_Id)
+                        {
+                            if (respuestas.Resp_Tipo == "1")
+                            {
+                                @Html.DisplayFor(modelItem => respuestas.Resp_Nom)
+
+                                <input type="text" name="@Html.DisplayFor(modelItem => item.Preg_Id)" />
+                                <br />
+
+                            }
+                            else if (respuestas.Resp_Tipo == "2")
+                            {
+                                @Html.DisplayFor(modelItem => respuestas.Resp_Nom)
+
+                                <input type="checkbox" class="checkbox" name="@Html.DisplayFor(modelItem => item.Preg_Id)" value="@Html.DisplayFor(modelItem => respuestas.Resp_Id) " />
+                                <br />
+                            }
+                            else if (respuestas.Resp_Tipo == "3")
+                            {
+                                @Html.DisplayFor(modelItem => respuestas.Resp_Nom)
+
+                                <input type="radio" class="" name="@Html.DisplayFor(modelItem => item.Preg_Id)" value="@Html.DisplayFor(modelItem => respuestas.Resp_Id) " />
+                                <br />
+
+                            }
+                            else if (respuestas.Resp_Tipo == "4")
+                            {
+                                @Html.DisplayFor(modelItem => respuestas.Resp_Nom)
+
+                                <input type="text" name="@Html.DisplayFor(modelItem => item.Preg_Id)" /> <br />
+
+                            }
+
+                        }
+                    }
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+</div>
+<script>
+    function imprimirDIV(contenido) {
+        var ficha = document.getElementById(contenido);
+        var ventanaImpresion = window.open(' ', 'popUp');
+        ventanaImpresion.document.write(ficha.innerHTML);
+        ventanaImpresion.document.close();
+        ventanaImpresion.print();
+        ventanaImpresion.close();
+    }
+</script>
+
+
+
+
+@*@model IEnumerable<Plenamente.Models.ViewModel.PreguntaViewModel>
+
+    @{
+        ViewBag.Title = "Encuesta";
+        Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
+    }
+
+    <h2>Encuesta</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <div>
+        <div>
+
+            <div>
+                Pregunta
+            </div>
+            <div>
+                Respuesta
+            </div>
+
+        </div>
+
+        @foreach (var item in Model)
+        {
+        <div>
+            <div>
+                @Html.DisplayFor(modelItem => item.Preg_Titulo)
+            </div>
+            <div>
+                @foreach (var respuestas in item.Respuesta)
+                {
+                    if (item.Preg_Id == respuestas.Preg_Id)
+                    {
+                        if (respuestas.Resp_Tipo == "1")
+                        {
+
+                            <input type="text" name="@Html.DisplayFor(modelItem =>respuestas.Resp_Id)" value="" />
+                            <br />
+
+                        }
+                        else if (respuestas.Resp_Tipo == "2")
+                        {
+
+                            @Html.DisplayFor(modelItem => respuestas.Resp_Nom)
+                            <input type="checkbox" class="checkbox" name="@Html.DisplayFor(modelItem => item.Preg_Id)" value="@Html.DisplayFor(modelItem =>respuestas.Resp_Id)" />
+                            <br />
+                        }
+                        else if (respuestas.Resp_Tipo == "3")
+                        {
+
+                            @Html.DisplayFor(modelItem => respuestas.Resp_Nom)
+                            <input type="radio" class="" name="@Html.DisplayFor(modelItem => item.Preg_Id)" value="@Html.DisplayFor(modelItem =>respuestas.Resp_Id)" />
+                            <br />
+                        }
+                        else if (respuestas.Resp_Tipo == "4")
+                        {
+                            @Html.DisplayFor(modelItem => respuestas.Resp_Nom)
+                            <input type="date" />
+                            <br />
+                        }
+
+
+                    }
+                }
+            </div>
+
+            </div>
+        }
+
+    </div>
+*@

@@ -1,0 +1,58 @@
+﻿@model Plenamente.Models.AutoEvaluacionAfp
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AutoEvaluacionAfp</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empresa.Empr_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Auev_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Auev_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Auev_Inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Auev_Inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Auev_Fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Auev_Fin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Finalizada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Finalizada)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Auevafp_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

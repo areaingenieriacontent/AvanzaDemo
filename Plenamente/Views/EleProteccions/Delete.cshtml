@@ -1,0 +1,40 @@
+﻿@model Plenamente.Models.EleProteccion
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+    <div class="colorVerdeBack">
+        <p>Eliminar Elemento</p>
+    </div>
+<div class="centrarContenido">
+    <dl class="dl-horizontal">
+        <dt>
+            Nombre del Elemento: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Epro_Nom)
+        </dd>
+
+        <dt>
+            Fecha de registro: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Epro_Registro)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+            <input type="submit" value="Borrar" class="btn btn-default" /> 
+
+    }
+</div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "EleProteccions")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>

@@ -1,0 +1,305 @@
+﻿@model Plenamente.Models.ViewModel.CumplimientoViewModel
+@{
+    ViewBag.Title = "Cumplimiento";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="colorVerdeBack">
+    <p>Autoevaluación SST</p>
+</div>
+<div class="contenidoCuerpo marco">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2>@Model.ItemEstandar.Descripcion - @Model.ItemEstandar.Porcentaje %</h2>
+                    <br />
+                    <p class="text-justify">
+                        @Model.ItemEstandar.Verificar
+                    </p>
+                    <hr />
+                    @if (Model.ItemEstandar.Video != null)
+                    {
+                        <iframe style="width: 100%; height: 60vh;"
+                                src="@Model.ItemEstandar.Video"
+                                frameborder="0"
+                                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    }
+                    <hr />
+                </div>
+            </div>
+
+            <hr />
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.ItemEstandarId)
+            @Html.HiddenFor(model => model.Nit)
+            @Html.HiddenFor(model => model.Registro)
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Cumple, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Cumple)
+                        @Html.ValidationMessageFor(model => model.Cumple, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nocumple, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Nocumple)
+                        @Html.ValidationMessageFor(model => model.Nocumple, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NoAplica, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.NoAplica)
+                        @Html.ValidationMessageFor(model => model.NoAplica, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="divJustifica" style="visibility: @(Model.NoAplica ?  "visible" : "hidden");">
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Justifica, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Justifica)
+                        @Html.ValidationMessageFor(model => model.Justifica, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2  col-sm-3 col-xs-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nojustifica, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Nojustifica)
+                        @Html.ValidationMessageFor(model => model.Nojustifica, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Observaciones, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextAreaFor(model => model.Observaciones, new { @class = "form-control", required = "required", placeholder = "Aquí las observaciones..." })
+                        @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                    <input data-toggle="modal" data-target="#myModal" id="btnMasInfo" type="button" onclick="document.getElementById('divMasInfo').style.visibility = 'visible';" class="btn btn-primary" value="Recursos de apoyo" style="visibility: visible;" />
+                    <input type="submit" value="Aceptar" class="btn btn-default" />
+                    @*<input id="btnPlanTrabajo" type="button" onclick="location.href = '@Url.Action("Index", "Plandetrabajo")';" class="btn btn-default" value="Plan de trabajo" style="visibility: hidden;" />*@
+                    <a href='@Url.Action("IndexM", "Plandetrabajo")' onclick="window.open(this.href, 'mywin',
+                     'left=20,top=20,width=580,height=500,toolbar=1,resizable=0'); return false;"><input id="btnPlanTrabajo" type="button" value="Crear actividad" class="btn btn-default" style="visibility: hidden;" /></a>
+                    @*@Html.ActionLink("Nombreee ", "Index", "Plantra", null, new { target = "_blank", @class = "btn btn-primary fa fa-list" })*@
+
+                </div>
+            </div>
+            <div class="row">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <label class="text-danger">@ViewBag.TextError</label>
+                <label class="text-success">@ViewBag.TextExitoso</label>
+            </div>
+        </div>
+    }
+</div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("AutoevaluacionSST", "AutoEvaluacion")" class="ayudaTitulos">
+        <span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+    </a>
+</div>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Recursos de apoyo</h4>
+            </div>
+            <div class="modal-body">
+                <div class="" id="" style="visibility: visible;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label class="">
+                            @Model.ItemEstandar.MasInformacion
+                        </label>
+
+                    </div>
+                </div>
+                @if (Model.ItemEstandar.Recurso != null || Model.ItemEstandar.Reursob != null || Model.ItemEstandar.Reursoc != null || Model.ItemEstandar.Reursod != null || Model.ItemEstandar.Reursoe != null || Model.ItemEstandar.Reursof != null)
+                {
+                    <div class="row">
+                        @if (Model.ItemEstandar.Recurso != null)
+                        {
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <p class="text-justify">
+                                    <a href="@Model.ItemEstandar.Recurso" target="_blank" style="color: black;">
+                                        <img src="~/Imagenes/format.png" style="max-width:50px; min-height:50px;" class="fa fa-file">
+                                        <label class="text-center text-black-50 text-dark">
+                                            @(Model.ItemEstandar.Recurso.Split('/').Last() ?? "Ver ayuda")
+                                        </label>
+                                    </a>
+                                </p>
+                            </div>
+                        }
+                        @if (Model.ItemEstandar.Reursob != null)
+                        {
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <p class="text-justify">
+                                    <a href="@Model.ItemEstandar.Reursob" target="_blank" style="color: black;">
+                                        <img src="~/Imagenes/format.png" style="max-width:50px; min-height:50px;" class="fa fa-file">
+                                        <label class="text-center text-black-50">
+                                            @(Model.ItemEstandar.Reursob.Split('/').Last() ?? "Ver ayuda")
+                                        </label>
+                                    </a>
+                                </p>
+                            </div>
+                        }
+                        @if (Model.ItemEstandar.Reursoc != null)
+                        {
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <p class="text-justify">
+                                    <a href="@Model.ItemEstandar.Reursoc" target="_blank" style="color: black;">
+                                        <img src="~/Imagenes/format.png" style="max-width:50px; min-height:50px;" class="fa fa-file">
+                                        <label class="text-center text-black-50 text-dark">
+                                            @(Model.ItemEstandar.Reursoc.Split('/').Last() ?? "Ver ayuda")
+                                        </label>
+                                    </a>
+                                </p>
+                            </div>
+                        }
+                        @if (Model.ItemEstandar.Reursod != null)
+                        {
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <p class="text-justify">
+                                    <a href="@Model.ItemEstandar.Reursod" target="_blank" style="color: black;">
+                                        <img src="~/Imagenes/format.png" style="max-width:50px; min-height:50px;" class="fa fa-file">
+                                        <label class="text-center text-black-50">
+                                            @(Model.ItemEstandar.Reursod.Split('/').Last() ?? "Ver ayuda")
+                                        </label>
+                                    </a>
+                                </p>
+                            </div>
+                        }
+                        @if (Model.ItemEstandar.Reursoe != null)
+                        {
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <p class="text-justify">
+                                    <a href="@Model.ItemEstandar.Reursoe" target="_blank" style="color: black;">
+                                        <img src="~/Imagenes/format.png" style="max-width:50px; min-height:50px;" class="fa fa-file">
+                                        <label class="text-center text-black-50 text-dark">
+                                            @(Model.ItemEstandar.Reursoe.Split('/').Last() ?? "Ver ayuda")
+                                        </label>
+                                    </a>
+                                </p>
+                            </div>
+                        }
+                        @if (Model.ItemEstandar.Reursof != null)
+                        {
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <p class="text-justify">
+                                    <a href="@Model.ItemEstandar.Reursof" target="_blank" style="color: black;">
+                                        <img src="~/Imagenes/format.png" style="max-width:50px; min-height:50px;" class="fa fa-file">
+                                        <label class="text-center text-black-50">
+                                            @(Model.ItemEstandar.Reursof.Split('/').Last() ?? "Ver ayuda")
+                                        </label>
+                                    </a>
+                                </p>
+                            </div>
+                        }
+                    </div>
+                    <hr />
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        var cumple = document.getElementById("Cumple");
+        var nocumple = document.getElementById("Nocumple");
+        var Justifica = document.getElementById("Justifica");
+        var Nojustifica = document.getElementById("Nojustifica");
+        var btnPlanTrabajo = document.getElementById("btnPlanTrabajo");
+        var NoAplica = document.getElementById("NoAplica");
+        var divJustifica = document.getElementById("divJustifica");
+
+        var Id = document.getElementById("Id");
+        cumple.addEventListener('change', function () {
+            Nojustifica.checked = false;
+            NoAplica.checked = false;
+            nocumple.checked = !this.checked;
+            if (this.checked) {
+                divJustifica.style.visibility = 'hidden';
+                btnPlanTrabajo.style.visibility = 'hidden';
+            }
+            else {
+                divJustifica.style.visibility = 'visible';
+                btnPlanTrabajo.style.visibility = 'visible';
+            }
+            Justifica.checked = cumple.checked;
+        });
+        nocumple.addEventListener('change', function () {
+            Nojustifica.checked = false;
+            NoAplica.checked = false;
+            cumple.checked = !this.checked;
+            cumple.checked = !this.checked;
+            if (this.checked) {
+                divJustifica.style.visibility = 'hidden';
+                btnPlanTrabajo.style.visibility = 'visible';
+            }
+            else {
+                divJustifica.style.visibility = 'visible';
+                btnPlanTrabajo.style.visibility = 'hidden';
+            }
+            Justifica.checked = cumple.checked;
+        });
+        NoAplica.addEventListener('change', function () {
+            btnPlanTrabajo.style.visibility = 'hidden';
+            if (this.checked) {
+                divJustifica.style.visibility = 'visible';
+                cumple.checked = false;
+                nocumple.checked = false;
+            } else {
+                divJustifica.style.visibility = 'hidden';
+                cumple.checked = true;
+            }
+        });
+        Justifica.addEventListener('change', function () {
+            if (this.checked) {
+                Nojustifica.checked = false;
+                btnPlanTrabajo.style.visibility = 'hidden';
+            } else {
+                Nojustifica.checked = true;
+                btnPlanTrabajo.style.visibility = 'visible';
+            }
+        });
+        Nojustifica.addEventListener('change', function () {
+            if (this.checked) {
+                Justifica.checked = false;
+                btnPlanTrabajo.style.visibility = 'visible';
+            } else {
+                Justifica.checked = true;
+                btnPlanTrabajo.style.visibility = 'hidden';
+            }
+        });
+    </script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    @*<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>*@
+
+}

@@ -1,0 +1,50 @@
+﻿@model Plenamente.Models.Encuesta
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Crear una nueva encuesta</p>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    
+<div class="centrarContenido">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.DisplayFor(Model => Model.Encu_Creacion, new { @class = "" })
+    </div>
+    <br />
+    <p>Nombre De La Encuesta:</p>
+    <br />
+    @Html.EditorFor(model => model.Encu_Nombre, new { htmlAttributes = new { @class = "" } })
+    <br />
+    <br />
+    <p>Fecha de vencimiento:</p>
+    <br />
+    @Html.EditorFor(model => model.Encu_Vence, new { htmlAttributes = new { @class = "estilosSelect" } })
+    <br />
+    @Html.ValidationMessageFor(model => model.Encu_Vence, "", new { @class = "text-danger" })
+
+    <p>Estado de la encuesta:</p>
+    <br />
+    @Html.EditorFor(model => model.Encu_Estado, new { htmlAttributes = new { @class = "" } })
+    <br />
+    <div class="form-group">
+        <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>@Html.DropDownList("Empr_Nit", null, htmlAttributes: new { @class = "estilosSelect" })</label>
+
+    </div>
+
+    <input type="submit" value="Crear" class="btn btn-default" />
+
+</div>
+    }
+    <div class="contenidoVolver">
+        <a href="Index" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+    </div>
+
+

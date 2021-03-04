@@ -1,0 +1,12 @@
+*Letras Header  --<
+*Header --<
+*Boton Fijo Soporte --<
+*Ocultar Puntos Acomulados  --<
+*Acomodar Banner --<
+*Centrar Textos Evaluuacion --<
+*Cambiar Formato Mesa de ayuda.
+*Cambiar correo linkeado a la mesa de ayuda. --<
+*Error de credenciales. --<
+*Cambiar guia con preguntas y borrar. --<
+
+  @*<a id="BTN_ADD" href="#" data-toggle="modal" data-target="#myModal" style="background-color:transparent;">Preguntas Frecuentes </a>*@

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Plenamente.Models.Estandar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Criterio.Crit_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Esta_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Esta_Porcentaje)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Esta_Registro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Criterio.Crit_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Esta_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Esta_Porcentaje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Esta_Registro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Esta_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Esta_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Esta_Id })
+        </td>
+    </tr>
+}
+
+</table>

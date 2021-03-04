@@ -1,0 +1,48 @@
+﻿@model Plenamente.Models.Politica
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Eliminar política</p>
+</div>
+<div class="centrarContenido">
+    <d1>
+
+        <dt>
+            Archivo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Poli_Archivo)
+        </dd>
+
+        <dt>
+            Fecha: @Html.DisplayFor(model => model.Poli_Registro)
+        </dt>
+
+
+  
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" />
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+</div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "Politicas")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

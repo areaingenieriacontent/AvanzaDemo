@@ -1,0 +1,35 @@
+﻿@model Plenamente.Models.Arl
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Arl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Arl_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Arl_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Arl_Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Arl_Registro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Arl_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
