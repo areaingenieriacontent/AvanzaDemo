@@ -295,13 +295,9 @@
     <Compile Include="Controllers\CargoEmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\202005200123024_afp.cs" />
-    <Compile Include="Migrations\202005200123024_afp.Designer.cs">
-      <DependentUpon>202005200123024_afp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010150413159_dashbaord.cs" />
-    <Compile Include="Migrations\202010150413159_dashbaord.Designer.cs">
-      <DependentUpon>202010150413159_dashbaord.cs</DependentUpon>
+    <Compile Include="Migrations\202103241827504_modelo_decreto1072.cs" />
+    <Compile Include="Migrations\202103241827504_modelo_decreto1072.Designer.cs">
+      <DependentUpon>202103241827504_modelo_decreto1072.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -312,18 +308,22 @@
     <Compile Include="Models\Arl.cs" />
     <Compile Include="Models\AutoEvaluacion.cs" />
     <Compile Include="Models\AutoEvaluacionAfp.cs" />
+    <Compile Include="Models\AutoevaluacionDecreto1072.cs" />
     <Compile Include="Models\AutoEvaluacionn.cs" />
     <Compile Include="Models\CargoEmpresa.cs" />
     <Compile Include="Models\CateLicencia.cs" />
     <Compile Include="Models\CicloPHVA.cs" />
     <Compile Include="Models\CicloPHVAAfp.cs" />
+    <Compile Include="Models\CicloPHVADecreto1072.cs" />
     <Compile Include="Models\Ciudad.cs" />
     <Compile Include="Models\ClaseArl.cs" />
     <Compile Include="Models\ClaseTest.cs" />
     <Compile Include="Models\Criterio.cs" />
     <Compile Include="Models\CriterioAfp.cs" />
+    <Compile Include="Models\CriterioDecreto1072.cs" />
     <Compile Include="Models\Cumplimiento.cs" />
     <Compile Include="Models\CumplimientoAfp.cs" />
+    <Compile Include="Models\CumplimientoDecreto1072.cs" />
     <Compile Include="Models\DocsEvidencias.cs" />
     <Compile Include="Models\EleProteccion.cs" />
     <Compile Include="Models\Empresa.cs" />
@@ -334,12 +334,15 @@
     <Compile Include="Models\EstadoPersona.cs" />
     <Compile Include="Models\Estandar.cs" />
     <Compile Include="Models\EstandarAfp.cs" />
+    <Compile Include="Models\EstandarDecreto1072.cs" />
     <Compile Include="Models\Evidencia.cs" />
     <Compile Include="Models\EvidenciaAfp.cs" />
+    <Compile Include="Models\EvidenciaDecreto1072.cs" />
     <Compile Include="Models\Frecuencia.cs" />
     <Compile Include="Models\Genero.cs" />
     <Compile Include="Models\ItemEstandar.cs" />
     <Compile Include="Models\ItemEstandarAfp.cs" />
+    <Compile Include="Models\ItemEstandarDecreto1072.cs" />
     <Compile Include="Models\JornadaEmpresa.cs" />
     <Compile Include="Models\Mes.cs" />
     <Compile Include="Models\Notificacion.cs" />
@@ -1369,11 +1372,8 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Migrations\202005200123024_afp.resx">
-      <DependentUpon>202005200123024_afp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010150413159_dashbaord.resx">
-      <DependentUpon>202010150413159_dashbaord.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103241827504_modelo_decreto1072.resx">
+      <DependentUpon>202103241827504_modelo_decreto1072.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacionApb.rdlc" />
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />

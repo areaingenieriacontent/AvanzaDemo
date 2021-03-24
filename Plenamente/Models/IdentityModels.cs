@@ -93,6 +93,8 @@ namespace Plenamente.Models
         public ICollection<Notificacion> notificaciones { get; set; }
         //Permite a EvidenciaAfp acceder a la Data
         public ICollection<EvidenciaAfp> EvidenciasAfp { get; set; }
+        //Permite a EvidenciasDecreto1072 acceder a la Data
+        public ICollection<EvidenciaDecreto1072> EvidenciasDecreto1072 { get; set; }
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -170,6 +172,15 @@ namespace Plenamente.Models
         public DbSet<ItemEstandarAfp> Tb_ItemEstandarAfp { get; set; }
         public DbSet<EvidenciaAfp> Tb_EvidenciaAfp { get; set; }
         public DbSet<DocsEvidencia> Tb_DocsEvidencia { get; set; }
+
+        //DbSet para Decreto 1072
+        public DbSet<CicloPHVADecreto1072> Tb_cicloPHVADecreto1072 { get; set; }
+        public DbSet<CriterioDecreto1072> Tb_CriterioDecreto1072 { get; set; }
+        public DbSet<AutoevaluacionDecreto1072> Tb_AutoEvaluacionDecreto1072 { get; set; }
+        public DbSet<CumplimientoDecreto1072> Tb_cumplimientoDecreto1072 { get; set; }
+        public DbSet<EstandarDecreto1072> Tb_EstandarDecreto1072 { get; set; }
+        public DbSet<ItemEstandarDecreto1072> Tb_ItemEstandarDecreto1072 { get; set; }
+        public DbSet<EvidenciaDecreto1072> Tb_EvidenciaDecreto1072 { get; set; }
 
         public static ApplicationDbContext Create()
         {
