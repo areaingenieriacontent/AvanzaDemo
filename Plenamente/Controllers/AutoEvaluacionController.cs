@@ -439,6 +439,30 @@ namespace Plenamente.Controllers
             }
             return View(new EmpresaViewModel { IdEmpresa = empresa.Empr_Nit, NombreEmpresa = empresa.Empr_Nom, NumeroEmpleados = empresa.Empr_Ttrabaja });
         }
+
+        /// <summary>
+        /// Carga la vista de número de empleados en el caso de que se quiera cambiar la cantidad de empleados
+        /// </summary>
+        /// <returns>
+        /// Retorna la vista de número de empleados.
+        /// </returns>
+        public ActionResult NumeroEmpleadosDecreto1072()
+        {
+            ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+
+            //Validacion. Existe alguna autoevaluacion en proceso
+            if (db.Tb_AutoEvaluacionDecreto1072.Any(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada))
+            {
+                return RedirectToAction("AutoevaluacionDecreto1072");
+            }
+            if (empresa == null)
+            {
+                return RedirectToAction("Account", "Login");
+            }
+            return View(new EmpresaViewModel { IdEmpresa = empresa.Empr_Nit, NombreEmpresa = empresa.Empr_Nom, NumeroEmpleados = empresa.Empr_Ttrabaja });
+        }
+
         /// <summary>
         /// Carga la vista de número de empleados en el caso de que se quiera cambiar la cantidad de empleados
         /// </summary>
@@ -516,6 +540,54 @@ namespace Plenamente.Controllers
                     AutoEvaluacion = a,
                     Auev_Inicio = a.Auev_Inicio,
                     NameAutoEvaluacion = a.Auev_Nom
+                };
+                autoEvaluacionViewModel.Add(autoEvaluacionView);
+                identificadorIncremental++;
+            }
+            autoEvaluacionViewModel = autoEvaluacionViewModel.Skip((pagina - 1) * _RegistrosPorPagina)
+                                                 .Take(_RegistrosPorPagina)
+                                                 .ToList();
+            int _TotalPaginas = (int)Math.Ceiling((double)_TotalRegistros / _RegistrosPorPagina);
+            _PaginadorCustomers = new PaginadorGenerico<AutoEvaluacionViewModel>()
+            {
+                RegistrosPorPagina = _RegistrosPorPagina,
+                TotalRegistros = _TotalRegistros,
+                TotalPaginas = _TotalPaginas,
+                PaginaActual = pagina,
+                Resultado = autoEvaluacionViewModel
+            };
+            return View(_PaginadorCustomers);
+        }
+
+        /// <summary>
+        /// Carga la vista de historico de autoevaluaciones paginado.
+        /// </summary>
+        /// <param name="pagina">
+        ///  El número de la página actual para el listado de autoevaluaciones.
+        /// </param>
+        /// <returns>
+        /// La vista de hitorico de autoevaluaciones paginada.
+        /// </returns>
+        public ActionResult VerHistoricoDecreto1072(int pagina = 1)
+        {
+            //To-Do Complete Development and adjust viewmodel
+            int _TotalRegistros = 0;
+            string user = User.Identity.Name;
+            int? EmpNit = db.Users.Where(c => c.Email == user).FirstOrDefault().Empr_Nit;
+            int identificadorIncremental = 1;
+            List<AutoevaluacionDecreto1072> autoEvaluacions = db.Tb_AutoEvaluacionDecreto1072.Where(c => c.Empr_Nit == EmpNit && c.Finalizada).OrderBy(c => c.AeDecreto_Id).ToList();
+            _TotalRegistros = autoEvaluacions.Count();
+            List<AutoEvaluacionViewModel> autoEvaluacionViewModel = new List<AutoEvaluacionViewModel>();
+            foreach (AutoevaluacionDecreto1072 a in autoEvaluacions)
+            {
+                AutoEvaluacionViewModel autoEvaluacionView = new AutoEvaluacionViewModel
+                {
+                    Id = a.AeDecreto_Id,
+                    IdentificadorIncremental = identificadorIncremental,
+                    Auev_Fin = a.Ae_Fin,
+                    AutoEvaluacionDecreto = a,
+                    Auev_Inicio = a.Ae_Inicio,
+                    NameAutoEvaluacion = a.Ae_Nom
                 };
                 autoEvaluacionViewModel.Add(autoEvaluacionView);
                 identificadorIncremental++;

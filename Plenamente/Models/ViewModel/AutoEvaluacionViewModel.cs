@@ -15,6 +15,15 @@ namespace Plenamente.Models.ViewModel
         /// La autoevaluacion de la autoevaluación.
         /// </value>
         public AutoEvaluacion AutoEvaluacion { get; set; }
+
+        /// <summary>
+        /// Obtiene o llena la autoevaluación de perfilamiento.
+        /// </summary>
+        /// <value>
+        /// Objeto de tipo autoevaluacion decreto 1072
+        /// </value>
+        public AutoevaluacionDecreto1072 AutoEvaluacionDecreto { get; set; }
+
         /// <summary>
         /// Inicializa una nueva instancia de la <see cref="AutoEvaluacionViewModel"/> clase.
         /// </summary>
