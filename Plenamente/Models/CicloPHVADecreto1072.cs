@@ -10,6 +10,6 @@ namespace Plenamente.Models
         public string Nombre { get; set; }
         public string Description { get; set; }
         public short Categoria { get; set; }
-        public ICollection<CriterioDecreto1072> Criterios { get; set; }
+        public ICollection<CriterioDecreto1072> CriteriosDecreto1072 { get; set; }
     }
 }
