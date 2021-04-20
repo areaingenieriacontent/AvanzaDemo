@@ -293,6 +293,14 @@
     <Compile Include="Controllers\CargoEmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Migrations\202104131835599_empresa.cs" />
+    <Compile Include="Migrations\202104131835599_empresa.Designer.cs">
+      <DependentUpon>202104131835599_empresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104200339031_nivriesgo.cs" />
+    <Compile Include="Migrations\202104200339031_nivriesgo.Designer.cs">
+      <DependentUpon>202104200339031_nivriesgo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -1353,6 +1361,7 @@
     <Content Include="Views\AutoEvaluacion\AutoevaluacionDecreto1072.cshtml" />
     <Content Include="Views\AutoEvaluacion\CumplimientoDecreto1072.cshtml" />
     <Content Include="Views\AutoEvaluacion\CargaEvidenciaDecreto1072.cshtml" />
+    <Content Include="Views\Shared\_InfoEmpresa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1374,6 +1383,12 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Migrations\202104131835599_empresa.resx">
+      <DependentUpon>202104131835599_empresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104200339031_nivriesgo.resx">
+      <DependentUpon>202104200339031_nivriesgo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacionApb.rdlc" />
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
