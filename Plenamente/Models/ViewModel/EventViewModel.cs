@@ -77,5 +77,12 @@ namespace Plenamente.Models.ViewModel
         /// La fecha final en texto.
         /// </value>
         public string EndDate => End.ToString("yyyy-MM-dd");
+        /// <summary>
+        /// Tabla empresa.
+        /// </summary>
+        /// <value>
+        /// --.
+        /// </value>
+        public Empresa Empresa { get; set; }
     }
 }

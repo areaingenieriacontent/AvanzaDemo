@@ -1,0 +1,18 @@
+﻿<style>
+                
+            </style>
+            <div class="infoempresa">
+                @model List<Plenamente.Models.ViewModel.EventViewModel>
+                @if (Model.Count > 0 && Model[0].Empresa != null)
+                {
+                    <div class="row bordeseparador"><div class="col-md-5"><h1>Empresa:</h1>                 </div><div class="col-md-7"><h2>@Model[0].Empresa.Empr_Nom</h2>             </div></div>
+                    <div class="row bordeseparador"><div class="col-md-5"><h1>NIT:</h1>                     </div><div class="col-md-7"><h2>@Model[0].Empresa.Empr_NewNit</h2>          </div></div>
+                    <div class="row bordeseparador"><div class="col-md-5"><h1>Nivel Riesgo:</h1>            </div><div class="col-md-7"><h2>@Model[0].Empresa.Empr_NivRies</h2>          </div></div>
+                    <div class="row bordeseparador"><div class="col-md-5"><h1>Trabajadores:</h1>            </div><div class="col-md-7"><h2>@Model[0].Empresa.Empr_Ttrabaja</h2>        </div></div>
+                    <div class="row bordeseparador"><div class="col-md-5"><h1>Sector Economico:</h1>        </div><div class="col-md-7"><h2>@Model[0].Empresa.Sector_Economico</h2>     </div></div>
+                    <div class="row bordeseparador"><div class="col-md-5"><h1>Sucursales:</h1>              </div><div class="col-md-7"><h2>@Model[0].Empresa.Sucursales</h2>           </div></div>
+                    <div class="row bordeseparador"><div class="col-md-5"><h1>Prima de cotización:</h1>     </div><div class="col-md-7"><h2>@Model[0].Empresa.Prima_Cotizacion</h2>     </div></div>
+                    <div class="row bordeseparador"><div class="col-md-5"><h1>Indice de Siniestralidad:</h1></div><div class="col-md-7"><h2>@Model[0].Empresa.Indice_Siniestralidad</h2></div></div>
+                 }
+            </div>
+
