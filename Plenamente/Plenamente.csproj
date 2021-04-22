@@ -293,9 +293,13 @@
     <Compile Include="Controllers\CargoEmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\202103300505363_inicial.cs" />
-    <Compile Include="Migrations\202103300505363_inicial.Designer.cs">
-      <DependentUpon>202103300505363_inicial.cs</DependentUpon>
+    <Compile Include="Migrations\202104131835599_empresa.cs" />
+    <Compile Include="Migrations\202104131835599_empresa.Designer.cs">
+      <DependentUpon>202104131835599_empresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104200339031_nivriesgo.cs" />
+    <Compile Include="Migrations\202104200339031_nivriesgo.Designer.cs">
+      <DependentUpon>202104200339031_nivriesgo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -373,15 +377,18 @@
     <Compile Include="Models\UsuariosPlandetrabajo.cs" />
     <Compile Include="Models\ViewModel\ActividadesAsignadasPlanDeTrabajoViewModel.cs" />
     <Compile Include="Models\ViewModel\ArchivoCumpView.cs" />
+    <Compile Include="Models\ViewModel\AutoEvaluacionViewModelDecreto1072.cs" />
     <Compile Include="Models\ViewModel\AutoEvaluacionViewModelafp.cs" />
     <Compile Include="Models\ViewModel\AutoEvaluacionViewModel.cs" />
     <Compile Include="Models\ViewModel\CriteriosViewModelafp.cs" />
     <Compile Include="Models\ViewModel\CriteriosViewModel.cs" />
+    <Compile Include="Models\ViewModel\CriteriosViewModelDecreto1072.cs" />
     <Compile Include="Models\ViewModel\DinamicaAu.cs" />
     <Compile Include="Models\ViewModel\EmpresaViewModel.cs" />
     <Compile Include="Models\ViewModel\EventViewModel.cs" />
     <Compile Include="Models\ViewModel\EvidenciaCumplimientoViewModelafp.cs" />
     <Compile Include="Models\ViewModel\EvidenciaCumplimientoViewModel.cs" />
+    <Compile Include="Models\ViewModel\EvidenciaCumplimientoViewModelDecreto1072.cs" />
     <Compile Include="Models\ViewModel\EvidenciasDashViewModel.cs" />
     <Compile Include="Models\ViewModel\PlandetrabajoActividadesViewModel.cs" />
     <Compile Include="Models\ViewModel\PoliticasViewModel.cs" />
@@ -1351,6 +1358,10 @@
     <Content Include="Views\Dashboard\CargarEvidencia.cshtml" />
     <Content Include="Views\AutoEvaluacion\VerHistoricoDecreto1072.cshtml" />
     <Content Include="Views\AutoEvaluacion\NumeroEmpleadosDecreto1072.cshtml" />
+    <Content Include="Views\AutoEvaluacion\AutoevaluacionDecreto1072.cshtml" />
+    <Content Include="Views\AutoEvaluacion\CumplimientoDecreto1072.cshtml" />
+    <Content Include="Views\AutoEvaluacion\CargaEvidenciaDecreto1072.cshtml" />
+    <Content Include="Views\Shared\_InfoEmpresa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1372,8 +1383,11 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Migrations\202103300505363_inicial.resx">
-      <DependentUpon>202103300505363_inicial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202104131835599_empresa.resx">
+      <DependentUpon>202104131835599_empresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104200339031_nivriesgo.resx">
+      <DependentUpon>202104200339031_nivriesgo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacionApb.rdlc" />
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />

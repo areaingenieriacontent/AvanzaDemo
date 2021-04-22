@@ -6,12 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Plenamente.Models;
 
 namespace Plenamente.Controllers
 {
     public class EmpresasController : Controller
     {
+        protected UserManager<ApplicationUser> UserManager { get; set; }
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Empresas
@@ -49,7 +51,7 @@ namespace Plenamente.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Empr_Nit,Empr_Nom,Empr_Dir,Arl_Id,Carl_Id,Empr_Afiarl,Empr_Ttrabaja,Empr_Itrabaja,Empr_telefono,Empr_Registro,Empr_NewNit,Empr_RepresentanteLegal,Empr_CargoRepresentante,Empre_RepresentanteDoc,Empr_ResponsableSST,Empre_ResponsableDoc")] Empresa empresa)
+        public ActionResult Create([Bind(Include = "Empr_Nit,Empr_Nom,Empr_Dir,Arl_Id,Carl_Id,Empr_Afiarl,Empr_Ttrabaja,Empr_Itrabaja,Empr_telefono,Empr_Registro,Empr_NewNit,Sucursales,Sector_Economico,Indice_Siniestralidad,Prima_Cotizacion,Empr_RepresentanteLegal,Empr_CargoRepresentante,Empre_RepresentanteDoc,Empr_ResponsableSST,Empre_ResponsableDoc")] Empresa empresa)
         {
             if (ModelState.IsValid)
             {

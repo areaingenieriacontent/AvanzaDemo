@@ -35,8 +35,7 @@ namespace Plenamente.Controllers
             List<EventViewModel> lst = new List<EventViewModel>();
             try
             {
-                lst =
-                    db.Tb_ProgamacionTareas
+                lst = db.Tb_ProgamacionTareas
                         .Where(a => a.ActiCumplimiento.Empr_Nit == AccountData.NitEmpresa
                                 && a.Estado
                                 && a.ActiCumplimiento.Usersplandetrabajo.Count > 0)
@@ -51,10 +50,15 @@ namespace Plenamente.Controllers
                                 BorderColor = "#9FBDC9",
                                 EventRoute = "/ActividadCumplimiento/Details/" + a.ActiCumplimiento.Acum_Id
                             }).ToList();
+            
             }
             catch (Exception ex)
             {
                 Console.Write(ex);
+            }
+            Empresa e = db.Tb_Empresa.Where(x => x.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+            if(e != null) { 
+                lst[0].Empresa = e;
             }
             return View(lst);
         }

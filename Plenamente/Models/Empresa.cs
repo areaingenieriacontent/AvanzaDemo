@@ -28,6 +28,11 @@ namespace Plenamente.Models
         public DateTime Empr_Registro { get; set; }
         //Index(IsUnique = true)]
         public int Empr_NewNit { get; set; }
+        public int Empr_NivRies { get; set; }
+        public int Sucursales { get; set; }
+        public string Sector_Economico { get; set; }
+        public float Indice_Siniestralidad { get; set; }
+        public int Prima_Cotizacion { get; set; }
         public string Empr_RepresentanteLegal { get; set; }
         public string Empr_CargoRepresentante { get; set; }
         public int Empre_RepresentanteDoc { get; set; }
