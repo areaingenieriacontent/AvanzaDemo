@@ -301,6 +301,10 @@
     <Compile Include="Migrations\202104200339031_nivriesgo.Designer.cs">
       <DependentUpon>202104200339031_nivriesgo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104221559218_itemestandar.cs" />
+    <Compile Include="Migrations\202104221559218_itemestandar.Designer.cs">
+      <DependentUpon>202104221559218_itemestandar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -1388,6 +1392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104200339031_nivriesgo.resx">
       <DependentUpon>202104200339031_nivriesgo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104221559218_itemestandar.resx">
+      <DependentUpon>202104221559218_itemestandar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacionApb.rdlc" />
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
