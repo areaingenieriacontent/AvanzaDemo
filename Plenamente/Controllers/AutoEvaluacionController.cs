@@ -135,6 +135,7 @@ namespace Plenamente.Controllers
                                                         Video = i.Iest_Video,
                                                         Periodo = i.Iest_Peri,
                                                         MasInformacion = i.Iest_MasInfo,
+                                                        Dependencia = i.Iest_Norma,
                                                         Cumplimientos = i.Cumplimientos.Where(cu => cu.Empr_Nit == AccountData.NitEmpresa && !cu.AutoEvaluacion.Finalizada).ToList()
                                                     }).ToList()
                                         }).ToList()

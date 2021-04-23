@@ -29,6 +29,7 @@ namespace Plenamente.Models
         public string Iest_Rescursoe { get; set; }
         public string Iest_Rescursof { get; set; }
         public string Iest_MasInfo { get; set; }
+        public int Iest_Norma { get; set; }
 
 
         //Permite a cumplimineto acceder a la Data

@@ -5354,6 +5354,22 @@ a.badge-dark:focus, a.badge-dark.focus {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
+.list-item-sst {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #f7c498c9;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.list-item-perfilamiento {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #98e1f7c9;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
 
 .list-group-item:first-child {
   border-top-left-radius: 0.25rem;

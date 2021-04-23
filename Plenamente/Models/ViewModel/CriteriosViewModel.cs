@@ -252,6 +252,10 @@ namespace Plenamente.Models.ViewModel
         /// La informacion adicional del elemento o item del estandar.
         /// </value>
         public string MasInformacion { get; set; }
+        /// <summary>
+        /// Define a que Norma o Decreto pertenecera el Item y a su vez se visualice con un color diferente.
+        /// </summary>
+        public int Dependencia { get; set; }
     }
     /// <summary>
     /// Modelo de vista que implementa las propiedades necesarias para entidad cumplimiento.

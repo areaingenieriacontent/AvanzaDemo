@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Plenamente.Models.ViewModel.CicloPHVAViewModel>
+﻿ @model IEnumerable<Plenamente.Models.ViewModel.CicloPHVAViewModel>
 
 @{
     ViewBag.Title = "Autoevaluación SST";
@@ -36,12 +36,33 @@
                                             <ul class="list-group">
                                                 @foreach (var elemento in estandar.Elementos)
                                                 {
-                                                    <li class="list-group-item">
-                                                        <i class="fa @(elemento.ExisteCumplimiento ? "fa-check" : "fa-window-minimize")" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");"></i>
-                                                        <a href="@Url.Action("Cumplimiento", "AutoEvaluacion", new { idItem = elemento.Id })" title="@elemento.Descripcion" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");">
-                                                            @elemento.Descripcion
-                                                        </a>
-                                                    </li>
+                                                    if (elemento.Dependencia == 0)
+                                                    {
+                                                        <li class="list-group-item" style="background:#ff6a0066">
+                                                            <i class="fa @(elemento.ExisteCumplimiento ? "fa-check" : "fa-window-minimize")" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");"></i>
+                                                            <a href="@Url.Action("Cumplimiento", "AutoEvaluacion", new { idItem = elemento.Id })" title="@elemento.Descripcion" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");">
+                                                                @elemento.Descripcion
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                    else if (elemento.Dependencia == 1)
+                                                    {
+                                                        <li class="list-group-item" style="background:#70bdffe0">
+                                                            <i class="fa @(elemento.ExisteCumplimiento ? "fa-check" : "fa-window-minimize")" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");"></i>
+                                                            <a href="@Url.Action("Cumplimiento", "AutoEvaluacion", new { idItem = elemento.Id })" title="@elemento.Descripcion" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");">
+                                                                @elemento.Descripcion
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li class="list-group-item">
+                                                            <i class="fa @(elemento.ExisteCumplimiento ? "fa-check" : "fa-window-minimize")" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");"></i>
+                                                            <a href="@Url.Action("Cumplimiento", "AutoEvaluacion", new { idItem = elemento.Id })" title="@elemento.Descripcion" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");">
+                                                                @elemento.Descripcion
+                                                            </a>
+                                                        </li>
+}
                                                 }
                                             </ul>
                                         }
