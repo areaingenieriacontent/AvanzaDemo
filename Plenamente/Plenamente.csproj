@@ -303,6 +303,10 @@
     <Compile Include="Migrations\202010150413159_dashbaord.Designer.cs">
       <DependentUpon>202010150413159_dashbaord.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105142211319_recomendacion.cs" />
+    <Compile Include="Migrations\202105142211319_recomendacion.Designer.cs">
+      <DependentUpon>202105142211319_recomendacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -1374,6 +1378,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010150413159_dashbaord.resx">
       <DependentUpon>202010150413159_dashbaord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105142211319_recomendacion.resx">
+      <DependentUpon>202105142211319_recomendacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacionApb.rdlc" />
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />

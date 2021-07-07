@@ -65,10 +65,14 @@
           <DataField>Fecha</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
+        <Field Name="ItemRecomendacion">
+          <DataField>ItemRecomendacion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>PlenamenteDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\ddiaz\Documents\GitHub\Plenamente\Plenamente\Plenamente\PlenamenteDataSet.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Inetpub\wwwroot\Avanza SgStt\Plenamente\PlenamenteDataSet.xsd</rd:SchemaPath>
         <rd:TableName>ResumenAutoEvaluacion</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -198,6 +202,9 @@
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.42697in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.74155in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -487,6 +494,43 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox28</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox6">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Item Recomendacion</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -808,6 +852,43 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox8">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontFamily />
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
@@ -1092,12 +1173,48 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ItemRecomendacion">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ItemRecomendacion.Value</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ItemRecomendacion</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
               </TablixRows>
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
+                <TablixMember />
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
@@ -1154,29 +1271,29 @@
             <Top>2.28052in</Top>
             <Left>0.11648cm</Left>
             <Height>0.64in</Height>
-            <Width>11.41576in</Width>
+            <Width>13.15731in</Width>
             <Style />
           </Tablix>
           <Tablix Name="Tablix1">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>10.98285cm</Width>
+                  <Width>10.87351cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.7204cm</Width>
+                  <Width>5.26288cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.57772cm</Width>
+                  <Width>4.16995cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.7622cm</Width>
+                  <Width>4.45012cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.4447cm</Width>
+                  <Width>4.46233cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.50816cm</Width>
+                  <Width>4.20078cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1606,7 +1723,7 @@
             <Top>4.24065cm</Top>
             <Left>0.11648cm</Left>
             <Height>1.2cm</Height>
-            <Width>28.99603cm</Width>
+            <Width>33.41957cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1632,7 +1749,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
             <Top>0.47308cm</Top>
-            <Left>4.36346cm</Left>
+            <Left>5.62021cm</Left>
             <Height>0.6cm</Height>
             <Width>4.88125cm</Width>
             <ZIndex>2</ZIndex>
@@ -1664,7 +1781,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox30</rd:DefaultName>
             <Top>1.56697cm</Top>
-            <Left>4.43401cm</Left>
+            <Left>5.69076cm</Left>
             <Height>0.6cm</Height>
             <Width>9.7867cm</Width>
             <ZIndex>3</ZIndex>
@@ -1699,7 +1816,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
             <Top>0.47308cm</Top>
-            <Left>0.42016cm</Left>
+            <Left>1.67691cm</Left>
             <Height>0.6cm</Height>
             <Width>3.87274cm</Width>
             <ZIndex>4</ZIndex>
@@ -1734,7 +1851,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
             <Top>1.56697cm</Top>
-            <Left>0.42016cm</Left>
+            <Left>1.67691cm</Left>
             <Height>0.6cm</Height>
             <Width>3.87274cm</Width>
             <ZIndex>5</ZIndex>
@@ -1769,7 +1886,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
             <Top>2.5575cm</Top>
-            <Left>0.42016cm</Left>
+            <Left>1.67691cm</Left>
             <Height>0.6cm</Height>
             <Width>3.87274cm</Width>
             <ZIndex>6</ZIndex>
@@ -1801,7 +1918,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox35</rd:DefaultName>
             <Top>2.5575cm</Top>
-            <Left>4.46929cm</Left>
+            <Left>5.72604cm</Left>
             <Height>0.6cm</Height>
             <Width>4.88125cm</Width>
             <ZIndex>7</ZIndex>
@@ -1836,7 +1953,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
             <Top>0.47308cm</Top>
-            <Left>9.52693cm</Left>
+            <Left>10.78368cm</Left>
             <Height>0.6cm</Height>
             <Width>1.62214cm</Width>
             <ZIndex>8</ZIndex>
@@ -1868,7 +1985,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
             <Top>0.47308cm</Top>
-            <Left>11.21963cm</Left>
+            <Left>12.47638cm</Left>
             <Height>0.6cm</Height>
             <Width>3.00108cm</Width>
             <ZIndex>9</ZIndex>
@@ -1903,7 +2020,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
             <Top>0.47308cm</Top>
-            <Left>14.40419cm</Left>
+            <Left>15.66094cm</Left>
             <Height>0.6cm</Height>
             <Width>3.09729cm</Width>
             <ZIndex>10</ZIndex>
@@ -1935,7 +2052,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
             <Top>0.47308cm</Top>
-            <Left>17.67786cm</Left>
+            <Left>18.93461cm</Left>
             <Height>0.6cm</Height>
             <Width>2.65875cm</Width>
             <ZIndex>11</ZIndex>
@@ -1970,7 +2087,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
             <Top>1.56697cm</Top>
-            <Left>14.40418cm</Left>
+            <Left>15.66093cm</Left>
             <Height>0.6cm</Height>
             <Width>3.09729cm</Width>
             <ZIndex>12</ZIndex>
@@ -2002,9 +2119,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
             <Top>1.56697cm</Top>
-            <Left>17.67786cm</Left>
+            <Left>18.93461cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.29375cm</Width>
+            <Width>4.0875cm</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
@@ -2037,7 +2154,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
             <Top>1.56697cm</Top>
-            <Left>22.67523cm</Left>
+            <Left>23.93198cm</Left>
             <Height>0.6cm</Height>
             <Width>2.19771cm</Width>
             <ZIndex>14</ZIndex>
@@ -2069,9 +2186,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
             <Top>1.56697cm</Top>
-            <Left>25.11996cm</Left>
+            <Left>26.37671cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.29375cm</Width>
+            <Width>4.03458cm</Width>
             <ZIndex>15</ZIndex>
             <Style>
               <Border>
@@ -2104,7 +2221,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
             <Top>0.47308cm</Top>
-            <Left>20.75429cm</Left>
+            <Left>22.01104cm</Left>
             <Height>0.6cm</Height>
             <Width>4.11865cm</Width>
             <ZIndex>16</ZIndex>
@@ -2136,9 +2253,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
             <Top>0.47308cm</Top>
-            <Left>25.11996cm</Left>
+            <Left>26.37671cm</Left>
             <Height>0.6cm</Height>
-            <Width>2.65875cm</Width>
+            <Width>4.03458cm</Width>
             <ZIndex>17</ZIndex>
             <Style>
               <Border>
@@ -2171,7 +2288,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
             <Top>2.5575cm</Top>
-            <Left>9.52693cm</Left>
+            <Left>11.87791cm</Left>
             <Height>0.6cm</Height>
             <Width>5.29281cm</Width>
             <ZIndex>18</ZIndex>
@@ -2203,7 +2320,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox35</rd:DefaultName>
             <Top>2.5575cm</Top>
-            <Left>14.99613cm</Left>
+            <Left>17.34711cm</Left>
             <Height>0.6cm</Height>
             <Width>4.88125cm</Width>
             <ZIndex>19</ZIndex>
@@ -2238,7 +2355,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
             <Top>2.5575cm</Top>
-            <Left>20.75429cm</Left>
+            <Left>23.46546cm</Left>
             <Height>0.6cm</Height>
             <Width>1.10927cm</Width>
             <ZIndex>20</ZIndex>
@@ -2270,9 +2387,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox35</rd:DefaultName>
             <Top>2.5575cm</Top>
-            <Left>22.15967cm</Left>
+            <Left>24.87294cm</Left>
             <Height>0.6cm</Height>
-            <Width>6.25404cm</Width>
+            <Width>5.53835cm</Width>
             <ZIndex>21</ZIndex>
             <Style>
               <Border>
@@ -2456,7 +2573,7 @@
         <Height>7.125in</Height>
         <Style />
       </Body>
-      <Width>11.79692in</Width>
+      <Width>13.69275in</Width>
       <Page>
         <PageHeader>
           <Height>4.04812cm</Height>
@@ -2496,9 +2613,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox45</rd:DefaultName>
               <Top>1.13701cm</Top>
-              <Left>0.03176cm</Left>
+              <Left>2.8628cm</Left>
               <Height>2.32021cm</Height>
-              <Width>28.30439cm</Width>
+              <Width>26.24971cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
