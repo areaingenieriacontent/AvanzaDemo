@@ -32,9 +32,9 @@ namespace Plenamente.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Pers_Retiro { get; set; }
-        public string Pers_Dir { get; set; }
-        public string Pers_Cemeg { get; set; }
-        public int Pers_Temeg { get; set; }
+        public string Pers_Dir { get; set; } = null;
+        public string Pers_Cemeg { get; set; } = null;
+        public int? Pers_Temeg { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Pers_Registro { get; set; }

@@ -56,6 +56,11 @@ namespace Plenamente.Controllers
             {
                 Console.Write(ex);
             }
+            Empresa e = db.Tb_Empresa.Where(x => x.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+            if (e != null)
+            {
+                lst[0].Empresa = e;
+            }
             return View(lst);
         }
 

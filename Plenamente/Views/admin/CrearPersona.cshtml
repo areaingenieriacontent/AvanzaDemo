@@ -82,11 +82,11 @@
     </div>
     <br />
     <br />
-    <h2 class="colorVerdeBack1">
+    <h2 class="colorVerdeBack1" style="display:none">
         Información personal del trabajador <img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:2%; margin-right:4%" />
         <a href="#" class="ayudaTitulos"><span style="width: 300px">Aquí podrá ingresar los datos específicos de sus trabajadores como el número de contacto, la licencia entre otros</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /><p></p></a>
     </h2>
-    <div class="plegable">
+    <div class="plegable" style="display:none">
         <br />
         <br />
         Número de licencia de conducción:
@@ -110,13 +110,13 @@
         Dirección de residencia:
         <br />
         <br />
-        @Html.EditorFor(model => model.Pers_Direccion, new { htmlAttributes = new { @class = "" } })
+        @Html.EditorFor(model => model.Pers_Direccion, new { htmlAttributes = new { @class = "", @Value = "NULL" } })
         <br />
         <br />
         Contacto de emergencia:
         <br />
         <br />
-        @Html.EditorFor(model => model.Pers_ContactoEmeg, new { htmlAttributes = new { @class = "" } })
+        @Html.EditorFor(model => model.Pers_ContactoEmeg, new { htmlAttributes = new { @class = "", @Value="NULL"} })
         <br />
         <br />
         Número de contacto:

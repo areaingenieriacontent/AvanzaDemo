@@ -307,6 +307,10 @@
     <Compile Include="Migrations\202105142211319_recomendacion.Designer.cs">
       <DependentUpon>202105142211319_recomendacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107080623515_actualizacion_informacion_trabajador.cs" />
+    <Compile Include="Migrations\202107080623515_actualizacion_informacion_trabajador.Designer.cs">
+      <DependentUpon>202107080623515_actualizacion_informacion_trabajador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -1381,6 +1385,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105142211319_recomendacion.resx">
       <DependentUpon>202105142211319_recomendacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107080623515_actualizacion_informacion_trabajador.resx">
+      <DependentUpon>202107080623515_actualizacion_informacion_trabajador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacionApb.rdlc" />
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />

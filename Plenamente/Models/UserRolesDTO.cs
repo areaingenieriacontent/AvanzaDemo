@@ -23,9 +23,9 @@ namespace Plenamente.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<DateTime> Pers_LicVence { get; set; }
-        public string Pers_Direccion { get; set; }
-        public string Pers_ContactoEmeg { get; set; }
-        public int Pers_TelefonoEmeg { get; set; }
+        public string Pers_Direccion { get; set; } = null;
+        public string Pers_ContactoEmeg { get; set; } = null;
+        public int? Pers_TelefonoEmeg { get; set; }
         [Display(Name = "Lockout End Date Utc")]
         public DateTime? LockoutEndDateUtc { get; set; }
         public int AccessFailedCount { get; set; }
